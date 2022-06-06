@@ -2,11 +2,4 @@ ClientSettings.json
 package-lock.json
 .npm
 node_modules
-other
-\other\TODO.txt
-/other/TODO.txt
-other\TODO.txt
-other/TODO.txt
-\TODO.txt
-/TODO.txt
 TODO.txt

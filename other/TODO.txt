@@ -1,3 +1,0 @@
-TODO : Faire le mannage message = pas faire commande say
-mettre l'embed pour la commande ping
-zlx.me commande (envoi des infos sur l'utilisateur)
