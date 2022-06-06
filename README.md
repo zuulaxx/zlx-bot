@@ -1,2 +1,2 @@
-# Bot-Discord-zuulaxx
+# zlx-bot
 Bot-Discord-zuulaxx
