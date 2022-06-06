@@ -34,6 +34,7 @@ var fullDate = date + " à " + hours;
 
 Client.on("ready", async () => {
     console.log("\nHello, world!\n");
+    console.log(`Je suis ${Client.user.tag}\n`);
     console.log(`Démarage le ${fullDate}`);
 
     //statue
