@@ -181,13 +181,8 @@ Client.on("messageCreate", (message) => {
                     inline: true
                 },
                 {
-                    name: "**__zlx.info @user__** :",
-                    value: `Tu reçois des info sur "user" !`,
-                    inline: true
-                },
-                {
-                    name: "**__zlx.info__** :",
-                    value: "Tu reçois des infos",
+                    name: "**__zlx.info (@user)__** :",
+                    value: "Tu reçois des infos sur toi ou sur (@user)",
                     inline: true
                 },
                 {
