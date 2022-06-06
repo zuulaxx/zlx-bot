@@ -355,54 +355,6 @@ Client.on("messageCreate", (message) => {
                 .catch();
     }
     //"bee"
-    //"cat"
-
-    const cat = [
-        "11.png",
-        "12.png",
-        "13.png",
-        "14.png",
-        "15.png",
-        "16.png",
-        "17.png",
-        "18.png",
-        "19.png",
-        "20.png"
-    ];
-
-    function rdmm() {
-        return cat[Math.floor(Math.random() * cat.length)];
-    }
-
-    if (message.content === prefix + "cat") {
-        const promise = fs.promises.readFile(
-            getPath(`images/animals-img/${rdmm()}`)
-        ); //this image exists
-        message.react("🐈"),
-            Promise.resolve(promise)
-                .then(function (buffer) {
-                    const exampleEmbed = new MessageEmbed()
-                        .setColor("#BD9C8A")
-                        .setTitle("Qui a invoqué(e) un chat :cat: ?")
-                        .setFooter({
-                            text: `${message.author.tag} a invoqué(e) minouminouuuu le chat 🐈`
-                        });
-                    message.channel
-                        .send({
-                            embeds: [exampleEmbed],
-                            files: [{ attachment: buffer }]
-                        })
-                        .catch(),
-                        console.log(
-                            "\n",
-                            message.author.tag,
-                            "a invoqué(e) un **chat**"
-                        ),
-                        console.log("le", fullDate);
-                })
-                .catch();
-    }
-    //"cat"
 
     //"Say"
     Client.on("messageCreate", (message) => {
