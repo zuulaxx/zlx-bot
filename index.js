@@ -125,6 +125,7 @@ Client.on("messageCreate", (message) => {
                     value: `La date du jour : ${fullDate} !`,
                     inline: false
                 },
+                { name: "\u200B", value: "\u200B" },
                 {
                     name: "Langue :flag_fr:",
                     value: "```Le bot est Français ```",
