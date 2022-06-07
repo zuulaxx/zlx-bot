@@ -273,6 +273,12 @@ Client.on('messageCreate', (message) => {
   let user;
 
   if (message.content.startsWith(prefix + 'info')) {
+    message.channel.send('Chargement... 🚶‍♂️🚶🚶‍♂️').then((newMessage) => {
+        newMessage.edit('10'); newMessage.edit('9'); newMessage.edit('8'); newMessage.edit('7'); newMessage.edit('6'); newMessage.edit('5'); newMessage.edit('4'); newMessage.edit('3'); newMessage.edit('2'); newMessage.edit('1');
+    });
+  }
+
+  if (message.content.startsWith(prefix + 'info')) {
     if (message.mentions.users.first()) {
       user = message.mentions.users.first();
     } else {
@@ -391,6 +397,7 @@ const {
   VoiceConnectionStatus,
   VoiceConnectionDisconnectReason,
 } = require('@discordjs/voice');
+const { time } = require('@discordjs/builders');
 //const { NOTFOUND } = require("dns");
 //const { time } = require("console");
 //const { Server } = require("http");
