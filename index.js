@@ -86,76 +86,8 @@ Client.on('messageCreate', (message) => {
       console.log('le', fullDate);
   }
 
-  if (message.content === prefix + 'stats') {
-    const statsEmbed = new MessageEmbed()
-      .setColor('#ff0000')
-      .setTitle('Voici les stats du bot !')
-      .setDescription(
-        '<@974189972439564308> a été développé par <@734080641590886481>'
-      )
-      .addFields(
-        {
-          name: 'Nos stats :',
-          value: 'Voici tout les stats que vous pouvez connaitre :',
-        },
-        { name: '\u200B', value: '\u200B' },
-        {
-          name: "Nombres d'utilisateurs 👨‍💻 :",
-          value: `${Client.guilds.cache
-            .map((g) => g.memberCount)
-            .reduce((a, b) => a + b)}`,
-          inline: true,
-        },
-        { name: '\u200B', value: '\u200B', inline: true },
-        {
-          name: 'Nombres de serveures 📋 :',
-          value: `${Client.guilds.cache.size.toString()}`,
-          inline: true,
-        },
-        { name: '\u200B', value: '\u200B', inline: true },
-        {
-          name: '**__Voici le ping du bot :__ 🏓**',
-          value: `Chargement... 🚶‍♂️🚶🚶‍♂️ \n\n || 🏓 Latency is ${
-            Date.now() - message.createdTimestamp
-          }ms \n API Latency is ${Math.round(Client.ws.ping)}ms ||`,
-          inline: false,
-        },
-        { name: '\u200B', value: '\u200B' },
-        {
-          name: 'Nous sommes le 🕰️ :',
-          value: `La date du jour : ${fullDate} !`,
-          inline: false,
-        },
-        { name: '\u200B', value: '\u200B' },
-        {
-          name: 'Langue :flag_fr:',
-          value: '```Le bot est Français ```',
-          inline: false,
-        },
-        { name: '\u200B', value: '\u200B' },
-        {
-          name: 'Créateur du bot (▀̿Ĺ̯▀̿ ̿) :',
-          value: `<@734080641590886481>`,
-          inline: false,
-        },
-        { name: '\u200B', value: '\u200B' }
-      )
-      .addField(
-        '**__Des questions ?__**',
-        `**Demmande à <@734080641590886481>**`,
-        true
-      )
-      .setTimestamp()
-      .setFooter({
-        text: `${message.author.tag} a demandé nos stats !`,
-      });
-    message.channel.send({ embeds: [statsEmbed] }).catch(),
-      console.log('\n The **stats** command has been sent 😄 '),
-      console.log('by', message.author.tag, '\n'),
-      console.log('le', fullDate);
-  }
 
-  //"aide"
+    //"aide"
   else if (message.content === prefix + 'aide') {
     message.react('✅');
     const exampleEmbed = new MessageEmbed()
@@ -222,6 +154,76 @@ Client.on('messageCreate', (message) => {
       });
     message.channel.send({ embeds: [exampleEmbed] }).catch(),
       console.log('\n The **aide** command has been sent 😄 '),
+      console.log('by', message.author.tag, '\n'),
+      console.log('le', fullDate);
+  }
+
+
+  if (message.content === prefix + 'stats') {
+    const statsEmbed = new MessageEmbed()
+      .setColor('#ff0000')
+      .setTitle('Voici les stats du bot !')
+      .setDescription(
+        '<@974189972439564308> a été développé par <@734080641590886481>'
+      )
+      .addFields(
+        {
+          name: 'Nos stats :',
+          value: 'Voici tout les stats que vous pouvez connaitre :',
+        },
+        { name: '\u200B', value: '\u200B' },
+        {
+          name: "Nombres d'utilisateurs 👨‍💻 :",
+          value: `${Client.guilds.cache
+            .map((g) => g.memberCount)
+            .reduce((a, b) => a + b)}`,
+          inline: true,
+        },
+        { name: '\u200B', value: '\u200B', inline: true },
+        {
+          name: 'Nombres de serveures 📋 :',
+          value: `${Client.guilds.cache.size.toString()}`,
+          inline: true,
+        },
+        { name: '\u200B', value: '\u200B', inline: true },
+        {
+          name: '**__Voici le ping du bot :__ 🏓**',
+          value: `Chargement... 🚶‍♂️🚶🚶‍♂️ \n\n || 🏓 Latency is ${
+            Date.now() - message.createdTimestamp
+          }ms \n API Latency is ${Math.round(Client.ws.ping)}ms ||`,
+          inline: false,
+        },
+        { name: '\u200B', value: '\u200B' },
+        {
+          name: 'Nous sommes le 🕰️ :',
+          value: `La date du jour : ${fullDate} !`,
+          inline: false,
+        },
+        { name: '\u200B', value: '\u200B' },
+        {
+          name: 'Langue :flag_fr:',
+          value: '```Le bot est Français ```',
+          inline: false,
+        },
+        { name: '\u200B', value: '\u200B' },
+        {
+          name: 'Créateur du bot (▀̿Ĺ̯▀̿ ̿) :',
+          value: `<@734080641590886481>`,
+          inline: false,
+        },
+        { name: '\u200B', value: '\u200B' }
+      )
+      .addField(
+        '**__Des questions ?__**',
+        `**Demmande à <@734080641590886481>**`,
+        true
+      )
+      .setTimestamp()
+      .setFooter({
+        text: `${message.author.tag} a demandé nos stats !`,
+      });
+    message.channel.send({ embeds: [statsEmbed] }).catch(),
+      console.log('\n The **stats** command has been sent 😄 '),
       console.log('by', message.author.tag, '\n'),
       console.log('le', fullDate);
   }
