@@ -392,6 +392,11 @@ Client.on('messageCreate', (message) => {
   //}
   //"Say"
 
+  if (message.content === prefix + '1') {
+    message.delete();
+    message.channel.send("salut lol")
+  }
+
 });
 
   //"Voice-Play"
