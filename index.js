@@ -87,7 +87,7 @@ Client.on('messageCreate', (message) => {
   }
 
 
-    //"aide"
+  //"aide"
   else if (message.content === prefix + 'aide') {
     message.react('✅');
     const exampleEmbed = new MessageEmbed()
@@ -183,9 +183,8 @@ Client.on('messageCreate', (message) => {
         { name: '\u200B', value: '\u200B', inline: true },
         {
           name: '**__Voici le ping du bot :__ 🏓**',
-          value: `Chargement... 🚶‍♂️🚶🚶‍♂️ \n\n || 🏓 Latency is ${
-            Date.now() - message.createdTimestamp
-          }ms \n API Latency is ${Math.round(Client.ws.ping)}ms ||`,
+          value: `Chargement... 🚶‍♂️🚶🚶‍♂️ \n\n || 🏓 Latency is ${Date.now() - message.createdTimestamp
+            }ms \n API Latency is ${Math.round(Client.ws.ping)}ms ||`,
           inline: false,
         },
         { name: '\u200B', value: '\u200B' },
@@ -267,7 +266,7 @@ Client.on('messageCreate', (message) => {
 
   if (message.content.startsWith(prefix + 'info')) {
     message.channel.send('Chargement... 🚶‍♂️🚶🚶‍♂️').then((newMessage) => {
-        newMessage.edit('10'); newMessage.edit('9'); newMessage.edit('8'); newMessage.edit('7'); newMessage.edit('6'); newMessage.edit('5'); newMessage.edit('4'); newMessage.edit('3'); newMessage.edit('2'); newMessage.edit('1');
+      newMessage.edit('10'); newMessage.edit('9'); newMessage.edit('8'); newMessage.edit('7'); newMessage.edit('6'); newMessage.edit('5'); newMessage.edit('4'); newMessage.edit('3'); newMessage.edit('2'); newMessage.edit('1');
     });
   }
 
@@ -300,6 +299,21 @@ Client.on('messageCreate', (message) => {
   /*****************************************
    ********** END OF INFO COMMAND **********
    *****************************************/
+
+  //"clear"
+
+  //module.exports.run = async (bot, message, args) => {
+
+  //if (message.content.startsWith("zlx.clear")) {
+  //message.delete();
+  //if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(`Tu n'as pas la permission...`);
+  //if (!args[0]) return message.channel.send("Tu dois spécifier un nombre de messages à supprimer !");
+  //message.channel.bulkDelete(args[0]).then(() => {
+  //message.channel.send(`À ton service! (${args[0]}) `).then(msg => msg.delete(5000));
+
+  //})
+  //}
+  //}
 
   //"bee"
 
@@ -351,136 +365,134 @@ Client.on('messageCreate', (message) => {
   //"bee"
 
   //"Say"
+  //if (message.content.startsWith("zlx.say")) {
+  //if (!message.member.hasPermission('MANAGE_MESSAGES'))
+  //return message.channel.send(
+  //"🚫 | Vous n'avez pas les permissions d'utiliser ceci. `MANAGE_MESSAGES`"
+  //);
+  //if (
+  //message.content.includes('@everyone') ||
+  //message.content.includes('@here')
+  //)
+  //return message.channel.send(
+  //'🚫 | Merci de ne pas mentionner here/everyone.'
+  //);
+
+  //const sayMessage = args.join(' ');
+  //if (!sayMessage)
+  //return message.channel.send(
+  //"🚫 | Merci d'entrer un message à envoyer à votre place. "
+  //);
+  //message.delete();
+
+  //message.channel.send(sayMessage);
+  //console.log(
+  //`\n The **say** command has been sent 😄 by ${message.author.tag} le ${fullDate}`
+  //);
+  //}
+  //"Say"
+
+});
+
+  //"Voice-Play"
+  const {
+    createAudioPlayer,
+    createAudioResource,
+    joinVoiceChannel,
+    VoiceConnectionStatus,
+    VoiceConnectionDisconnectReason,
+  } = require('@discordjs/voice');
+  const { time } = require('@discordjs/builders');
+  //const { NOTFOUND } = require("dns");
+  //const { time } = require("console");
+  //const { Server } = require("http");
+  const player = createAudioPlayer();
+  player.play(createAudioResource(getPath('audio/audio.mp3')));
+
+  var connection, subscription;
+  function exitVocal() {
+    if (connection != null) connection.destroy();
+    if (subscription != null) subscription.unsubscribe();
+  }
+
   Client.on('messageCreate', (message) => {
     if (message.author.bot) return;
-    else if (message.content === prefix + 'say') {
-      if (!message.member.hasPermission('MANAGE_MESSAGES'))
+    const args = message.content.slice(prefix.length).split(/ +/g).slice(1);
+
+    if (message.content === prefix + 'play') {
+      connection = joinVoiceChannel({
+        channelId: message.member.voice.channelId,
+        guildId: message.member.guild.id,
+        adapterCreator: message.guild.voiceAdapterCreator,
+      });
+
+      const voiceChannel = message.member.voice.channel;
+      if (!voiceChannel)
         return message.channel.send(
-          "🚫 | Vous n'avez pas les permissions d'utiliser ceci. `MANAGE_MESSAGES`"
-        );
-      if (
-        message.content.includes('@everyone') ||
-        message.content.includes('@here')
-      )
-        return message.channel.send(
-          '🚫 | Merci de ne pas mentionner here/everyone.'
+          '❌ | Merci de rejoindre un salon vocal !',
+          message.react('🚫'),
+          console.log(
+            message.author.tag,
+            'à **essayé** de jouer de la **musique**'
+          )
         );
 
-      const sayMessage = args.join(' ');
-      if (!sayMessage)
-        return message.channel.send(
-          "🚫 | Merci d'entrer un message à envoyer à votre place. "
-        );
-      message.delete();
+      connection.on(VoiceConnectionStatus.Ready, () => {
+        //console.log("Ready to play audio!");
+      });
+      (subscription = connection.subscribe(player)), message.react('▶️');
+      console.log('\n', message.author.tag, 'a utilisé **play** **musique** \n');
+    }
 
-      message.channel.send(sayMessage);
+    if (message.content === prefix + 'stop') {
+      const voiceChannel = message.member.voice.channel;
+      if (!voiceChannel)
+        return message.channel.send(
+          '❌ | Merci de rejoindre un salon vocal !',
+          message.react('🚫'),
+          console.log(
+            message.author.tag,
+            'à **essayé** de jouer de la **musique**'
+          )
+        );
+      message.react('⏹️');
+      connection = exitVocal({ VoiceConnectionDisconnectReason });
+      console.log('\n', message.author.tag, 'a utilisé **stop** **musique** \n');
+    }
+
+    if (message.content === prefix + 'replay') {
+      const voiceChannel = message.member.voice.channel;
+      if (!voiceChannel)
+        return message.channel.send(
+          '❌ | Merci de rejoindre un salon vocal !',
+          message.react('🚫'),
+          console.log(
+            message.author.tag,
+            'à **essayé** de jouer de la **musique**'
+          )
+        );
+      message.react('🔁');
+      connection = exitVocal({ VoiceConnectionDisconnectReason });
+
+      connection = joinVoiceChannel({
+        channelId: message.member.voice.channelId,
+        guildId: message.member.guild.id,
+        adapterCreator: message.guild.voiceAdapterCreator,
+      });
+
+      connection.on(VoiceConnectionStatus.Ready, () => {
+        //console.log("Ready to play audio!");
+      });
+      subscription = connection.subscribe(player);
+
       console.log(
-        `\n The **say** command has been sent 😄 by ${message.author.tag} le ${fullDate}`
+        '\n',
+        message.author.tag,
+        'a utilisé **replay** **musique** \n'
       );
     }
   });
-});
-//"Say"
+  //"Voice-Play"
 
-//"Voice-Play"
-const {
-  createAudioPlayer,
-  createAudioResource,
-  joinVoiceChannel,
-  VoiceConnectionStatus,
-  VoiceConnectionDisconnectReason,
-} = require('@discordjs/voice');
-const { time } = require('@discordjs/builders');
-//const { NOTFOUND } = require("dns");
-//const { time } = require("console");
-//const { Server } = require("http");
-const player = createAudioPlayer();
-player.play(createAudioResource(getPath('audio/audio.mp3')));
-
-var connection, subscription;
-function exitVocal() {
-  if (connection != null) connection.destroy();
-  if (subscription != null) subscription.unsubscribe();
-}
-
-Client.on('messageCreate', (message) => {
-  if (message.author.bot) return;
-  const args = message.content.slice(prefix.length).split(/ +/g).slice(1);
-
-  if (message.content === prefix + 'play') {
-    connection = joinVoiceChannel({
-      channelId: message.member.voice.channelId,
-      guildId: message.member.guild.id,
-      adapterCreator: message.guild.voiceAdapterCreator,
-    });
-
-    const voiceChannel = message.member.voice.channel;
-    if (!voiceChannel)
-      return message.channel.send(
-        '❌ | Merci de rejoindre un salon vocal !',
-        message.react('🚫'),
-        console.log(
-          message.author.tag,
-          'à **essayé** de jouer de la **musique**'
-        )
-      );
-
-    connection.on(VoiceConnectionStatus.Ready, () => {
-      //console.log("Ready to play audio!");
-    });
-    (subscription = connection.subscribe(player)), message.react('▶️');
-    console.log('\n', message.author.tag, 'a utilisé **play** **musique** \n');
-  }
-
-  if (message.content === prefix + 'stop') {
-    const voiceChannel = message.member.voice.channel;
-    if (!voiceChannel)
-      return message.channel.send(
-        '❌ | Merci de rejoindre un salon vocal !',
-        message.react('🚫'),
-        console.log(
-          message.author.tag,
-          'à **essayé** de jouer de la **musique**'
-        )
-      );
-    message.react('⏹️');
-    connection = exitVocal({ VoiceConnectionDisconnectReason });
-    console.log('\n', message.author.tag, 'a utilisé **stop** **musique** \n');
-  }
-
-  if (message.content === prefix + 'replay') {
-    const voiceChannel = message.member.voice.channel;
-    if (!voiceChannel)
-      return message.channel.send(
-        '❌ | Merci de rejoindre un salon vocal !',
-        message.react('🚫'),
-        console.log(
-          message.author.tag,
-          'à **essayé** de jouer de la **musique**'
-        )
-      );
-    message.react('🔁');
-    connection = exitVocal({ VoiceConnectionDisconnectReason });
-
-    connection = joinVoiceChannel({
-      channelId: message.member.voice.channelId,
-      guildId: message.member.guild.id,
-      adapterCreator: message.guild.voiceAdapterCreator,
-    });
-
-    connection.on(VoiceConnectionStatus.Ready, () => {
-      //console.log("Ready to play audio!");
-    });
-    subscription = connection.subscribe(player);
-
-    console.log(
-      '\n',
-      message.author.tag,
-      'a utilisé **replay** **musique** \n'
-    );
-  }
-});
-//"Voice-Play"
-
-Client.login(ClientSettings.token);
-console.log('\n Bot opérationnel');
+  Client.login(ClientSettings.token);
+  console.log('\n Bot opérationnel');
