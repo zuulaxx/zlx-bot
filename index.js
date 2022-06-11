@@ -95,7 +95,7 @@ Client.on('messageCreate', (message) => {
       .setTitle("Tu as besoin d'aide ?")
       //.setAuthor({ name: 'Avatar', iconURL: "./assets/images/botavatar.png" })
       .setDescription(
-        'Voici <@974189972439564308> développé par <@734080641590886481> ! \n'
+        'Voici zlx-bot développé par <@974578596704321576> ! \n'
       )
       .addFields(
         {
@@ -130,13 +130,8 @@ Client.on('messageCreate', (message) => {
           inline: true,
         },
         {
-          name: '**__Mention du bot__**',
-          value: '𝓈𝓊𝓇𝓅𝓇𝒾𝓈𝑒',
-          inline: true,
-        },
-        {
           name: '**__zlx.stats__** :',
-          value: 'Donne des statistiques sur <@974189972439564308>',
+          value: 'Donne des statistiques sur zlx-bot',
           inline: true,
         },
         { name: '\u200B', value: '\u200B' }
@@ -164,7 +159,7 @@ Client.on('messageCreate', (message) => {
       .setColor('#ff0000')
       .setTitle('Voici les stats du bot !')
       .setDescription(
-        '<@974189972439564308> a été développé par <@734080641590886481>'
+        'zlx-bot a été développé par <@974578596704321576>'
       )
       .addFields(
         {
@@ -208,14 +203,14 @@ Client.on('messageCreate', (message) => {
         { name: '\u200B', value: '\u200B' },
         {
           name: 'Créateur du bot (▀̿Ĺ̯▀̿ ̿) :',
-          value: `<@734080641590886481>`,
+          value: `<@974578596704321576>`,
           inline: false,
         },
         { name: '\u200B', value: '\u200B' }
       )
       .addField(
         '**__Des questions ?__**',
-        `**Demmande à <@734080641590886481>**`,
+        `**Demmande à <@974578596704321576>**`,
         true
       )
       .setTimestamp()
@@ -252,10 +247,6 @@ Client.on('messageCreate', (message) => {
     message.channel.send(`Bonjour ${message.author.username}`);
   }
 
-  // "zuulaxx's bot"
-  if (message.content === '<@974189972439564308>') {
-    message.reply('𝕄𝕖𝕣𝕔𝕚 𝕡𝕠𝕦𝕣 𝕝𝕒 𝕞𝕖𝕟𝕥𝕚𝕠𝕟 ! ^^');
-  }
   // "on"
   else if (message.content === prefix + 'on') {
     message.channel.send('```Démarage du programme```');
