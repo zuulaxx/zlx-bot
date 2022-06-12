@@ -125,8 +125,8 @@ Client.on('messageCreate', (message) => {
           inline: true,
         },
         {
-          name: '**__zlx.bee/zlx.cat__** :',
-          value: "Envoie une image de chats ou d'abeilles random",
+          name: '**__zlx.bee__** :',
+          value: "Envoie une image d'abeilles random",
           inline: true,
         },
         {
