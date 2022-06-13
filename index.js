@@ -229,7 +229,6 @@ Client.on('messageCreate', (message) => {
     message.content.includes('yo') ||
     message.content.includes('salut') ||
     message.content.includes('bjr') ||
-    message.content.includes('cc') ||
     message.content.includes('bonsoir') ||
     message.content.includes('coucou') ||
     message.content.includes('hey') ||
@@ -238,7 +237,6 @@ Client.on('messageCreate', (message) => {
     message.content.includes('Yo') ||
     message.content.includes('Salut') ||
     message.content.includes('Bjr') ||
-    message.content.includes('Cc') ||
     message.content.includes('Bonsoir') ||
     message.content.includes('Coucou') ||
     message.content.includes('Hey')
