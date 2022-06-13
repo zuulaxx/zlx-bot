@@ -38,7 +38,7 @@ Client.on('ready', async () => {
   console.log(`Je suis ${Client.user.tag}\n`);
   console.log(`Démarage le ${fullDate}`);
 
-  //statue
+//statue
   setInterval(function () {
     let status = [
       `Il y a ${Client.guilds.cache
