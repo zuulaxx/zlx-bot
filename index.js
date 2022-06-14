@@ -5,6 +5,8 @@ var ffmpeg = require('ffmpeg');
 require('ffmpeg-static');
 const fs = require('fs');
 const { MessageEmbed } = require('discord.js');
+const { Formatters } = require("discord.js")
+const dayjs = require("dayjs")
 const Client = new Discord.Client({
   intents: [
     Discord.Intents.FLAGS.GUILDS,
@@ -282,7 +284,7 @@ Client.on('messageCreate', (message) => {
       .addField(':id: ID du compte:', `${user.id}`, true)
       .addField(
         ':clock: Création du compte :',
-        `Le ${moment.utc(user.createdAt).format('DD/MM/YYYY à HH:mm:ss')}`,
+        `Le ${moment.utc(Client.user.createdAt).format('DD/MM/YYYY à HH:mm:ss')} à ${Formatters.time(dayjs(Client.user.createdTimestamp).unix(), Formatters.TimestampStyle.ShortDateTime)}`,
         true
       )
       //verif : avatar format

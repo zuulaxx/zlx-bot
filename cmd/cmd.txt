@@ -6,6 +6,8 @@ npm i @discordjs/voice --save
 
 npm i moment --save
 
+npm i dayjs --save
+
 npm i npm-check-update --save (truck pour les maj)
 
 ncu -u (rechercher les maj)
