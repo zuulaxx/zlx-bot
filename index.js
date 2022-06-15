@@ -40,7 +40,7 @@ Client.on('ready', async () => {
   console.log(`Je suis ${Client.user.tag}\n`);
   console.log(`Démarage le ${fullDate}`);
 
-//statue
+  //statue
   setInterval(function () {
     let status = [
       `Il y a ${Client.guilds.cache
@@ -89,8 +89,8 @@ Client.on('messageCreate', (message) => {
   }
 
 
-  //"aide"
-  else if (message.content === prefix + 'aide') {
+  //"help"
+  else if (message.content === prefix + 'help') {
     message.react('✅');
     const exampleEmbed = new MessageEmbed()
       .setColor('#0000ff')
@@ -150,7 +150,7 @@ Client.on('messageCreate', (message) => {
         text: `${message.author.tag} a demandé de l'aide !`,
       });
     message.channel.send({ embeds: [exampleEmbed] }).catch(),
-      console.log('\n The **aide** command has been sent 😄 '),
+      console.log('\n The **help** command has been sent 😄 '),
       console.log('by', message.author.tag, '\n'),
       console.log('le', fullDate);
   }
@@ -261,12 +261,12 @@ Client.on('messageCreate', (message) => {
   /*****************************************
    ******* BEGINNING OF INFO COMMAND *******
    *****************************************/
-  const moment = require('moment');
   let user;
+  const moment = require('moment');
 
   if (message.content.startsWith(prefix + 'info')) {
     message.channel.send('Chargement... 🚶‍♂️🚶🚶‍♂️').then((newMessage) => {
-      newMessage.edit('10'); newMessage.edit('9'); newMessage.edit('8'); newMessage.edit('7'); newMessage.edit('6'); newMessage.edit('5'); newMessage.edit('4'); newMessage.edit('3'); newMessage.edit('2'); newMessage.edit('1');
+      newMessage.edit('10'); newMessage.edit('9'); newMessage.edit('8'); newMessage.edit('7'); newMessage.edit('6'); newMessage.edit('5'); newMessage.edit('4'); newMessage.edit('3'); newMessage.edit('2'); newMessage.edit('1'); newMessage.edit('0'); newMessage.edit('⬇️⬇️⬇️');
     });
   }
 
@@ -283,10 +283,11 @@ Client.on('messageCreate', (message) => {
       .addField('😊 Tag du compte:', `${user.tag}`, true)
       .addField(':id: ID du compte:', `${user.id}`, true)
       .addField(
-        ':clock: Création du compte :',
-        `Le ${moment.utc(Client.user.createdAt).format('DD/MM/YYYY à HH:mm:ss')} à ${Formatters.time(dayjs(Client.user.createdTimestamp).unix(), Formatters.TimestampStyle.ShortDateTime)}`,
+        ':clock: Création du compte:',
+        `Le ${moment.utc(user.createdAt).format('DD/MM/YYYY à HH:mm:ss')} il y a ${jours} jours`,
         true
       )
+      //.addField('Nombre de serveur:', `${user.guilds.cache.size.toString()}`, true)
       //verif : avatar format
       .addField('Avatar :', `ㅤ`, false)
       .setImage(user.displayAvatarURL({ format: 'png' }), false);

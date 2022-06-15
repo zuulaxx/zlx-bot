@@ -44,7 +44,7 @@ _______________
 *
 *
 
-Pour plus d'infos rendez vous sur notre <u>*[Discord](https://discord.gg/BhWJsBchTV)*</u> <br /> ou faites la commande <u>*zlx.aide*</u> !
+Pour plus d'infos rendez vous sur notre <u>*[Discord](https://discord.gg/BhWJsBchTV)*</u> <br /> ou faites la commande <u>*zlx.help*</u> !
 </strong>
 ~~~~~
 ~~~~~

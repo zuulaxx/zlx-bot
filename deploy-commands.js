@@ -59,7 +59,7 @@ rest.put(Routes.applicationGuildCommands(config.clientId, config.guildId), {
             const cmd = message.content.split(prefix).pop();
 
             switch (cmd) {
-            case "aide":
+            case "help":
                 message.channel.send(
                     "**__Les commandes du bot :__**\n - **__/zuulaxx__** ou **__/zlx__** : Renvoie une bio plus approfondie sur zuulaxx 😊 !"
                 );
