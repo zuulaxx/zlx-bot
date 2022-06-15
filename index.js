@@ -168,7 +168,7 @@ Client.on('messageCreate', (message) => {
           name: 'Nos stats :',
           value: 'Voici tout les stats que vous pouvez connaitre :',
         },
-        { name: '\u200B', value: '\u200B' },
+        //{ name: '\u200B', value: '\u200B' },
         {
           name: "Nombres d'utilisateurs 👨‍💻 :",
           value: `${Client.guilds.cache
@@ -176,38 +176,38 @@ Client.on('messageCreate', (message) => {
             .reduce((a, b) => a + b)}`,
           inline: true,
         },
-        { name: '\u200B', value: '\u200B', inline: true },
+        //{ name: '\u200B', value: '\u200B', inline: true },
         {
           name: 'Nombres de serveures 📋 :',
           value: `${Client.guilds.cache.size.toString()}`,
           inline: true,
         },
-        { name: '\u200B', value: '\u200B', inline: true },
+        //{ name: '\u200B', value: '\u200B', inline: true },
         {
           name: '**__Voici le ping du bot :__ 🏓**',
           value: `Chargement... 🚶‍♂️🚶🚶‍♂️ \n\n || 🏓 Latency is ${Date.now() - message.createdTimestamp
             }ms \n API Latency is ${Math.round(Client.ws.ping)}ms ||`,
           inline: false,
         },
-        { name: '\u200B', value: '\u200B' },
+        //{ name: '\u200B', value: '\u200B' },
         {
-          name: 'Nous sommes le 🕰️ :',
-          value: `La date du jour : ${fullDate} !`,
+          name: 'Bot démarré le 🕰️ :',
+          value: `<t:${parseInt(Client.readyTimestamp / 1000)}:R>`,
           inline: false,
         },
-        { name: '\u200B', value: '\u200B' },
+        //{ name: '\u200B', value: '\u200B' },
         {
           name: 'Langue :flag_fr:',
-          value: '```Le bot est Français ```',
+          value: '```Le bot est Français```',
           inline: false,
         },
-        { name: '\u200B', value: '\u200B' },
+        //{ name: '\u200B', value: '\u200B' },
         {
           name: 'Créateur du bot (▀̿Ĺ̯▀̿ ̿) :',
           value: `<@974578596704321576>`,
           inline: false,
         },
-        { name: '\u200B', value: '\u200B' }
+        //{ name: '\u200B', value: '\u200B' }
       )
       .addField(
         '**__Des questions ?__**',
@@ -284,7 +284,7 @@ Client.on('messageCreate', (message) => {
       .addField(':id: ID du compte:', `${user.id}`, true)
       .addField(
         ':clock: Création du compte:',
-        `Le ${moment.utc(user.createdAt).format('DD/MM/YYYY à HH:mm:ss')} il y a ${jours} jours`,
+        `Le ${moment.utc(user.createdAt).format('DD/MM/YYYY à HH:mm:ss')} <t:${parseInt(user.createdAt / 1000)}:R>`,
         true
       )
       //.addField('Nombre de serveur:', `${user.guilds.cache.size.toString()}`, true)
