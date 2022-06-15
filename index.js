@@ -6,7 +6,6 @@ require('ffmpeg-static');
 const fs = require('fs');
 const { MessageEmbed } = require('discord.js');
 const { Formatters } = require("discord.js")
-const dayjs = require("dayjs")
 const Client = new Discord.Client({
   intents: [
     Discord.Intents.FLAGS.GUILDS,
