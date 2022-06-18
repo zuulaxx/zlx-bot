@@ -107,7 +107,7 @@ Client.on('messageCreate', (message) => {
         { name: '\u200B', value: '\u200B' },
         {
           name: '**__zlx.zuulaxx__** ou **__zlx.zlx__** :',
-          value: 'Donne des info ^^',
+          value: 'Donne des info sur zuulaxx^^',
           inline: true,
         },
         {
