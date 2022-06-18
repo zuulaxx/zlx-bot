@@ -96,7 +96,7 @@ Client.on('messageCreate', (message) => {
       .setTitle("Tu as besoin d'aide ?")
       //.setAuthor({ name: 'Avatar', iconURL: "./assets/images/botavatar.png" })
       .setDescription(
-        'Voici zlx-bot développé par <@974578596704321576> ! \n'
+        'Voici zlx-bot développé par <@762555226107543583> ! \n'
       )
       .addFields(
         {
@@ -160,7 +160,7 @@ Client.on('messageCreate', (message) => {
       .setColor('#ff0000')
       .setTitle('Voici les stats du bot !')
       .setDescription(
-        'zlx-bot a été développé par <@974578596704321576>'
+        'zlx-bot a été développé par <@762555226107543583>'
       )
       .addFields(
         {
@@ -203,14 +203,14 @@ Client.on('messageCreate', (message) => {
         //{ name: '\u200B', value: '\u200B' },
         {
           name: 'Créateur du bot (▀̿Ĺ̯▀̿ ̿) :',
-          value: `<@974578596704321576>`,
+          value: `<@762555226107543583>`,
           inline: false,
         },
         //{ name: '\u200B', value: '\u200B' }
       )
       .addField(
         '**__Des questions ?__**',
-        `**Demmande à <@974578596704321576>**`,
+        `**Demmande à <@762555226107543583>**`,
         true
       )
       .setTimestamp()
