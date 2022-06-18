@@ -393,28 +393,28 @@ Client.on('messageCreate', (message) => {
   //"Say"
 
   /*
-  if (message.content === prefix + '1') {
-    message.delete();
-    const AIDEEmbed = new MessageEmbed()
-      .setColor('#00ff00')
-      .setTitle("Bienvenue sur The Dev House")
-      .setDescription("\u200B\u200B")
-      .addField("Nous vous demandons de bien réspecter les règles si dessous", "Vous devez évidament réspécter aussi les TOS de discord (https://discord.com/tos)", false)
-      .addField('\u200B', "\u200B", true)
-      .addField("I – Comportement", "     -Restez courtois, poli. Vous pouvez être familier, nous ne vous demandons pas d’écrire comme Molière... Mais n'en abusez pas.\n\n     -Pas de violence verbale gratuite. Vous pouvez taquiner gentiment sans aller dans l’extrême. Si cela reste dans la bonne humeur et le second degré nous le tolérons. Si le staff estime que cela ne respecte plus la règle, vous risquez un kick ou un ban en fonction de l’humeur de la personne qui s'occupe de votre cas.", false)
-      .addField('\u200B', "\u200B", true)
-      .addField("II – Chat écrit/vocal", "     -Pas de spam, sous peine de bannissement.\n\n     -Pas de pub sur les différents chats, sous peine d’avertissement puis ban si l’avertissement n’est pas pris en compte. Sauf dérogation via un ticket.", false)
-      .addField('\u200B', "\u200B", true)
-      .addField("III – Profil/Pseudo", "     -Ne doit pas être ressemblant/confondu avec celui d’un membre du staff, sous peine d’avertissement puis ban si l’avertissement n’est pas pris en compte.\n\n     -Ne doit pas contenir de propos racistes, homophobes, sexistes … (genre la photo de profil Hi**er on s’en passera) sous peine d’avertissement puis ban si l’avertissement n’est pas pris en compte.\n\n     -Ne doit pas avoir de caractère pornographique, sous peine d’avertissement puis ban si l’avertissement n’est pas pris en compte.", false)
-      .addField('\u200B', "\u200B", true)
-      .addField("IV - Contacter le staff", "     -Si pour une quelconque raison, vous voulez contacter un membre du staff (modo ou admin), faite un ticket\n\n     -Si vous voulez entrer dans l’équipe de modération, faite un :mailbox:・ticket vous passerez un genre d’entretien afin de voir vos motivations et vos idées pour améliorer le serveur. Ne stressez pas non plus, si vous êtes légitime ça se passera bien ;). C’est histoire de voir à qui donner le rôle de modo et d’apprendre à le/la connaître. La décision vous sera donnée ultérieurement par réponse au ticket.", false)
-      .addField('\u200B', "\u200B", true)
-      .addField('Ces règles peuvent être soumises à des évolutions au cours du temps.', " Vous avez ici la base du règlement !!!\nMerci de le réspecter 😁 ", false)
-
-    message.channel.send({ embeds: [AIDEEmbed] }).catch()
-  }
-
-  if (message.content === prefix + '2') { message.delete(); message.channel.send("@everyone"); }
+    if (message.content === prefix + '1') {
+      message.delete();
+      const AIDEEmbed = new MessageEmbed()
+        .setColor('#00ff00')
+        .setTitle("Bienvenue sur The Dev House")
+        .setDescription("\u200BCréation du serveur : <t:1654889201>\u200B")
+        .addField("Nous vous demandons de bien réspecter les règles si dessous", "Vous devez évidament réspécter aussi les TOS de discord (https://discord.com/tos)", false)
+        .addField('\u200B', "\u200B", true)
+        .addField("I – Comportement", "     -Restez courtois, poli. Vous pouvez être familier, nous ne vous demandons pas d’écrire comme Molière... Mais n'en abusez pas.\n\n     -Pas de violence verbale gratuite. Vous pouvez taquiner gentiment sans aller dans l’extrême. Si cela reste dans la bonne humeur et le second degré nous le tolérons. Si le staff estime que cela ne respecte plus la règle, vous risquez un kick ou un ban en fonction de l’humeur de la personne qui s'occupe de votre cas.", false)
+        .addField('\u200B', "\u200B", true)
+        .addField("II – Chat écrit/vocal", "     -Pas de spam, sous peine de bannissement.\n\n     -Pas de pub sur les différents chats, sous peine d’avertissement puis ban si l’avertissement n’est pas pris en compte. Sauf dérogation via un ticket.", false)
+        .addField('\u200B', "\u200B", true)
+        .addField("III – Profil/Pseudo", "     -Ne doit pas être ressemblant/confondu avec celui d’un membre du staff, sous peine d’avertissement puis ban si l’avertissement n’est pas pris en compte.\n\n     -Ne doit pas contenir de propos racistes, homophobes, sexistes … (genre la photo de profil Hi**er on s’en passera) sous peine d’avertissement puis ban si l’avertissement n’est pas pris en compte.\n\n     -Ne doit pas avoir de caractère pornographique, sous peine d’avertissement puis ban si l’avertissement n’est pas pris en compte.", false)
+        .addField('\u200B', "\u200B", true)
+        .addField("IV - Contacter le staff", "     -Si pour une quelconque raison, vous voulez contacter un membre du staff (modo ou admin), faite un ticket\n\n     -Si vous voulez entrer dans l’équipe de modération, faite un :mailbox:・ticket vous passerez un genre d’entretien afin de voir vos motivations et vos idées pour améliorer le serveur. Ne stressez pas non plus, si vous êtes légitime ça se passera bien ;). C’est histoire de voir à qui donner le rôle de modo et d’apprendre à le/la connaître. La décision vous sera donnée ultérieurement par réponse au ticket.", false)
+        .addField('\u200B', "\u200B", true)
+        .addField('Ces règles peuvent être soumises à des évolutions au cours du temps.', " Vous avez ici la base du règlement !!!\nMerci de le réspecter 😁 ", false)
+  
+      message.channel.send({ embeds: [AIDEEmbed] }).catch()
+    }
+  
+    if (message.content === prefix + '2') { message.delete(); message.channel.send("@everyone"); }
   */
 
 });
