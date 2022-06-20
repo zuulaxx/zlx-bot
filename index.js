@@ -392,14 +392,14 @@ Client.on('messageCreate', (message) => {
   //}
   //"Say"
 
-  /*
+/*  
     if (message.content === prefix + '1') {
       message.delete();
       const AIDEEmbed = new MessageEmbed()
         .setColor('#00ff00')
         .setTitle("Bienvenue sur The Dev House")
         .setDescription("\u200BCréation du serveur : <t:1654889201>\u200B")
-        .addField("Nous vous demandons de bien réspecter les règles si dessous", "Vous devez évidament réspécter aussi les TOS de discord (https://discord.com/tos)", false)
+        .addField("Nous vous demandons de bien respecter les règles ci-dessous", "Vous devez évidement réspécter aussi les TOS de discord (https://discord.com/tos)", false)
         .addField('\u200B', "\u200B", true)
         .addField("I – Comportement", "     -Restez courtois, poli. Vous pouvez être familier, nous ne vous demandons pas d’écrire comme Molière... Mais n'en abusez pas.\n\n     -Pas de violence verbale gratuite. Vous pouvez taquiner gentiment sans aller dans l’extrême. Si cela reste dans la bonne humeur et le second degré nous le tolérons. Si le staff estime que cela ne respecte plus la règle, vous risquez un kick ou un ban en fonction de l’humeur de la personne qui s'occupe de votre cas.", false)
         .addField('\u200B', "\u200B", true)
@@ -415,7 +415,7 @@ Client.on('messageCreate', (message) => {
     }
   
     if (message.content === prefix + '2') { message.delete(); message.channel.send("@everyone"); }
-  */
+*/  
 
 });
 
