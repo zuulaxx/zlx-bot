@@ -422,6 +422,17 @@ Client.on('messageCreate', (message) => {
       if (message.content === prefix + '2') { message.delete(); message.channel.send("@everyone"); }
   */
 
+      //Slash,test
+//       const { SlashCommandBuilder } = require('@discordjs/builders');
+
+// const command = new SlashCommandBuilder().setName('ping').setDescription('Replies with Pong!');
+// const rawData = command.toJSON();
+// const command = new SlashCommandBuilder()
+// 	.setName('info')
+// 	.setDescription('Get info about a user!')
+// 	.addUserOption(option => option.setName('user').setDescription('The user'));
+      //Slash,test
+
 });
 
 //"Voice-Play"
