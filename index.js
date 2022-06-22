@@ -3,6 +3,8 @@ require('@discordjs/voice');
 const ClientSettings = require('./ClientSettings.json');
 var ffmpeg = require('ffmpeg');
 require('ffmpeg-static');
+const { SlashCommandBuilder } = require('@discordjs/builders');
+const data = new SlashCommandBuilder();
 const fs = require('fs');
 const { MessageEmbed } = require('discord.js');
 const { Formatters } = require('discord.js');
@@ -34,7 +36,7 @@ var hours =
 var fullDate = date + ' à ' + hours;
 //date
 
-Client.on('ready', async () => {
+Client.on('ready', async () => {  
   console.log('\nHello, world!\n');
   console.log(`Je suis ${Client.user.tag}\n`);
   console.log(`Démarage le ${fullDate}`);
@@ -51,8 +53,8 @@ Client.on('ready', async () => {
 
     Client.user.setActivity(status[rstatus], { type: 'WATCHING' });
   }, 10000);
+  //statue
 });
-//statue
 
 Client.on('messageCreate', (message) => {
   if (message.author.bot) return;
@@ -436,18 +438,21 @@ Client.on('messageCreate', (message) => {
 */
 
   //Slash,test
+  const data = new SlashCommandBuilder()
+    .setName('ping')
+    .setDescription('Renvoie "pong !"');
 
-  const { SlashCommandBuilder } = require('@discordjs/builders');
+    //Client.application.commands.create(data);
+  Client.guilds.cache.get('986698834853892106').commands.create(data);
+  console.log('application (/) commands *Ready*');
 
-  module.exports = {
-    data: new SlashCommandBuilder()
-      .setName('ping')
-      .setDescription('Replies with Pong!'),
-    async execute(interaction) {
-      await interaction.reply('Pong!');
-    },
-  };
-
+  Client.on('interactionCreate', (interaction) => {
+    if (interaction.isCommand()) {
+      if (interaction.commandName === 'ping') {
+        message = await interaction.reply("pong");
+      }
+    }
+  });
   //Slash,test
 });
 
