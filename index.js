@@ -397,7 +397,7 @@ Client.on('messageCreate', (message) => {
   };
   //"Say"
 
-  /*  
+/*    
       if (message.content === prefix + '1') {
         message.delete();
         const AIDEEmbed = new MessageEmbed()
@@ -419,8 +419,11 @@ Client.on('messageCreate', (message) => {
         message.channel.send({ embeds: [AIDEEmbed] }).catch()
       }
     
-      if (message.content === prefix + '2') { message.delete(); message.channel.send("@everyone"); }
-  */
+      if (message.content === prefix + '2') { 
+        message.delete(); 
+        message.channel.send("@everyone"); 
+      }
+*/
 
       //Slash,test
 //       const { SlashCommandBuilder } = require('@discordjs/builders');
