@@ -5,7 +5,7 @@ var ffmpeg = require('ffmpeg');
 require('ffmpeg-static');
 const fs = require('fs');
 const { MessageEmbed } = require('discord.js');
-const { Formatters } = require("discord.js")
+const { Formatters } = require('discord.js');
 const Client = new Discord.Client({
   intents: [
     Discord.Intents.FLAGS.GUILDS,
@@ -87,7 +87,6 @@ Client.on('messageCreate', (message) => {
       console.log('le', fullDate);
   }
 
-
   //"help"
   else if (message.content === prefix + 'help') {
     message.react('✅');
@@ -95,9 +94,7 @@ Client.on('messageCreate', (message) => {
       .setColor('#0000ff')
       .setTitle("Tu as besoin d'aide ?")
       //.setAuthor({ name: 'Avatar', iconURL: "./assets/images/botavatar.png" })
-      .setDescription(
-        'Voici zlx-bot développé par <@762555226107543583> ! \n'
-      )
+      .setDescription('Voici zlx-bot développé par <@762555226107543583> ! \n')
       .addFields(
         {
           name: '\n Nos commandes :',
@@ -154,14 +151,11 @@ Client.on('messageCreate', (message) => {
       console.log('le', fullDate);
   }
 
-
   if (message.content === prefix + 'stats') {
     const statsEmbed = new MessageEmbed()
       .setColor('#ff0000')
       .setTitle('Voici les stats du bot !')
-      .setDescription(
-        'zlx-bot a été développé par <@762555226107543583>'
-      )
+      .setDescription('zlx-bot a été développé par <@762555226107543583>')
       .addFields(
         {
           name: 'Nos stats :',
@@ -184,8 +178,9 @@ Client.on('messageCreate', (message) => {
         //{ name: '\u200B', value: '\u200B', inline: true },
         {
           name: '**__Voici le ping du bot :__ 🏓**',
-          value: `Chargement... 🚶‍♂️🚶🚶‍♂️ \n\n || 🏓 Latency is ${Date.now() - message.createdTimestamp
-            }ms \n API Latency is ${Math.round(Client.ws.ping)}ms ||`,
+          value: `Chargement... 🚶‍♂️🚶🚶‍♂️ \n\n || 🏓 Latency is ${
+            Date.now() - message.createdTimestamp
+          }ms \n API Latency is ${Math.round(Client.ws.ping)}ms ||`,
           inline: false,
         },
         //{ name: '\u200B', value: '\u200B' },
@@ -205,7 +200,7 @@ Client.on('messageCreate', (message) => {
           name: 'Créateur du bot (▀̿Ĺ̯▀̿ ̿) :',
           value: `<@762555226107543583>`,
           inline: false,
-        },
+        }
         //{ name: '\u200B', value: '\u200B' }
       )
       .addField(
@@ -265,7 +260,18 @@ Client.on('messageCreate', (message) => {
 
   if (message.content.startsWith(prefix + 'info')) {
     message.channel.send('Chargement... 🚶‍♂️🚶🚶‍♂️').then((newMessage) => {
-      newMessage.edit('10'); newMessage.edit('9'); newMessage.edit('8'); newMessage.edit('7'); newMessage.edit('6'); newMessage.edit('5'); newMessage.edit('4'); newMessage.edit('3'); newMessage.edit('2'); newMessage.edit('1'); newMessage.edit('0'); newMessage.edit('⬇️⬇️⬇️');
+      newMessage.edit('10');
+      newMessage.edit('9');
+      newMessage.edit('8');
+      newMessage.edit('7');
+      newMessage.edit('6');
+      newMessage.edit('5');
+      newMessage.edit('4');
+      newMessage.edit('3');
+      newMessage.edit('2');
+      newMessage.edit('1');
+      newMessage.edit('0');
+      newMessage.edit('⬇️⬇️⬇️');
     });
   }
 
@@ -283,7 +289,11 @@ Client.on('messageCreate', (message) => {
       .addField(':id: ID du compte:', `${user.id}`, true)
       .addField(
         ':clock: Création du compte:',
-        `Le ${moment.utc(user.createdAt).format('DD/MM/YYYY à HH:mm:ss')} <t:${parseInt(user.createdAt / 1000)}:R>`,
+        `Le ${moment
+          .utc(user.createdAt)
+          .format('DD/MM/YYYY à HH:mm:ss')} <t:${parseInt(
+          user.createdAt / 1000
+        )}:R>`,
         true
       )
       //.addField('Nombre de serveur:', `${user.guilds.cache.size.toString()}`, true)
@@ -365,25 +375,25 @@ Client.on('messageCreate', (message) => {
   //"bee"
 
   //"Say"
-  if (message.content.startsWith("zlx.say")) {
+  if (message.content.startsWith('zlx.say')) {
     if (!message.member.permissions.has('MANAGE_MESSAGES')) {
-      console.log("2");
+      console.log('2');
       return message.channel.send(
         "🚫 | Vous n'avez pas les permissions d'utiliser ceci. `MANAGE_MESSAGES`"
-      )
-    };
+      );
+    }
     if (
       message.content.includes('@everyone') ||
       message.content.includes('@here')
     ) {
-      console.log("3");
+      console.log('3');
       return message.channel.send(
         '🚫 | Merci de ne pas mentionner here/everyone.'
       );
     }
     const sayMessage = args.join(' ');
     if (!sayMessage) {
-      console.log("4");
+      console.log('4');
       return message.channel.send(
         "🚫 | Merci d'entrer un message à envoyer à votre place. "
       );
@@ -394,10 +404,10 @@ Client.on('messageCreate', (message) => {
     console.log(
       `\n The **say** command has been sent 😄 by ${message.author.tag} le ${fullDate}`
     );
-  };
+  }
   //"Say"
 
-/*    
+  /*  
       if (message.content === prefix + '1') {
         message.delete();
         const AIDEEmbed = new MessageEmbed()
@@ -425,17 +435,20 @@ Client.on('messageCreate', (message) => {
       }
 */
 
-      //Slash,test
-//       const { SlashCommandBuilder } = require('@discordjs/builders');
+  //Slash,test
 
-// const command = new SlashCommandBuilder().setName('ping').setDescription('Replies with Pong!');
-// const rawData = command.toJSON();
-// const command = new SlashCommandBuilder()
-// 	.setName('info')
-// 	.setDescription('Get info about a user!')
-// 	.addUserOption(option => option.setName('user').setDescription('The user'));
-      //Slash,test
+  const { SlashCommandBuilder } = require('@discordjs/builders');
 
+  module.exports = {
+    data: new SlashCommandBuilder()
+      .setName('ping')
+      .setDescription('Replies with Pong!'),
+    async execute(interaction) {
+      await interaction.reply('Pong!');
+    },
+  };
+
+  //Slash,test
 });
 
 //"Voice-Play"
