@@ -36,7 +36,7 @@ var hours =
 var fullDate = date + ' à ' + hours;
 //date
 
-Client.on('ready', async () => {  
+Client.on('ready', async () => {
   console.log('\nHello, world!\n');
   console.log(`Je suis ${Client.user.tag}\n`);
   console.log(`Démarage le ${fullDate}`);
@@ -180,9 +180,8 @@ Client.on('messageCreate', (message) => {
         //{ name: '\u200B', value: '\u200B', inline: true },
         {
           name: '**__Voici le ping du bot :__ 🏓**',
-          value: `Chargement... 🚶‍♂️🚶🚶‍♂️ \n\n || 🏓 Latency is ${
-            Date.now() - message.createdTimestamp
-          }ms \n API Latency is ${Math.round(Client.ws.ping)}ms ||`,
+          value: `Chargement... 🚶‍♂️🚶🚶‍♂️ \n\n || 🏓 Latency is ${Date.now() - message.createdTimestamp
+            }ms \n API Latency is ${Math.round(Client.ws.ping)}ms ||`,
           inline: false,
         },
         //{ name: '\u200B', value: '\u200B' },
@@ -294,8 +293,8 @@ Client.on('messageCreate', (message) => {
         `Le ${moment
           .utc(user.createdAt)
           .format('DD/MM/YYYY à HH:mm:ss')} <t:${parseInt(
-          user.createdAt / 1000
-        )}:R>`,
+            user.createdAt / 1000
+          )}:R>`,
         true
       )
       //.addField('Nombre de serveur:', `${user.guilds.cache.size.toString()}`, true)
@@ -442,18 +441,19 @@ Client.on('messageCreate', (message) => {
     .setName('ping')
     .setDescription('Renvoie "pong !"');
 
-    //Client.application.commands.create(data);
+  //Client.application.commands.create(data);
   Client.guilds.cache.get('986698834853892106').commands.create(data);
   console.log('application (/) commands *Ready*');
 
   Client.on('interactionCreate', (interaction) => {
     if (interaction.isCommand()) {
       if (interaction.commandName === 'ping') {
-        message = await interaction.reply("pong");
+        message = await interaction.reply("pong !");
       }
     }
   });
   //Slash,test
+
 });
 
 //"Voice-Play"
