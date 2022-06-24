@@ -6,7 +6,7 @@ require('ffmpeg-static');
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const data = new SlashCommandBuilder();
 const fs = require('fs');
-const { MessageEmbed } = require('discord.js');
+const { MessageEmbed, Collection } = require('discord.js');
 const { Formatters } = require('discord.js');
 const Client = new Discord.Client({
   intents: [
@@ -89,69 +89,70 @@ Client.on('messageCreate', (message) => {
       console.log('le', fullDate);
   }
 
-  //"help"
-  else if (message.content === prefix + 'help') {
-    message.react('✅');
-    const exampleEmbed = new MessageEmbed()
-      .setColor('#0000ff')
-      .setTitle("Tu as besoin d'aide ?")
-      //.setAuthor({ name: 'Avatar', iconURL: "./assets/images/botavatar.png" })
-      .setDescription('Voici zlx-bot développé par <@762555226107543583> ! \n')
-      .addFields(
-        {
-          name: '\n Nos commandes :',
-          value:
-            'Voici toutes les commandes que vous pouvez être amené a faire :',
-        },
-        { name: '\u200B', value: '\u200B' },
-        {
-          name: '**__zlx.zuulaxx__** ou **__zlx.zlx__** :',
-          value: 'Donne des info sur zuulaxx^^',
-          inline: true,
-        },
-        {
-          name: '**__zlx.hello__** :',
-          value: 'Tu reçois un mp 🎉',
-          inline: true,
-        },
-        {
-          name: '**__zlx.info (@user)__** :',
-          value: 'Tu reçois des infos sur toi ou sur (@user)',
-          inline: true,
-        },
-        {
-          name: '**__zlx.play, zlx.stop, zlx.replay__** :',
-          value: 'Joue ▶, arête ⏹️ ou recommence 🔁 une musique',
-          inline: true,
-        },
-        {
-          name: '**__zlx.bee__** :',
-          value: "Envoie une image d'abeilles random",
-          inline: true,
-        },
-        {
-          name: '**__zlx.stats__** :',
-          value: 'Donne des statistiques sur zlx-bot',
-          inline: true,
-        },
-        { name: '\u200B', value: '\u200B' }
-      )
-      .addField(
-        "**__Nombres d'utilisateurs :__**",
-        `**${Client.guilds.cache
-          .map((g) => g.memberCount)
-          .reduce((a, b) => a + b)}**`,
-        true
-      )
-      .setTimestamp()
-      .setFooter({
-        text: `${message.author.tag} a demandé de l'aide !`,
-      });
-    message.channel.send({ embeds: [exampleEmbed] }).catch(),
-      console.log('\n The **help** command has been sent 😄 '),
-      console.log('by', message.author.tag, '\n'),
-      console.log('le', fullDate);
-  }
+  // "help"
+  // else if (message.content === prefix + 'help') {
+  //   message.react('✅');
+  //   const exampleEmbed = new MessageEmbed()
+  //     .setColor('#0000ff')
+  //     .setTitle("Tu as besoin d'aide ?")
+  //     //.setAuthor({ name: 'Avatar', iconURL: "./assets/images/botavatar.png" })
+  //     .setDescription('Voici zlx-bot développé par <@762555226107543583> ! \n')
+  //     .addFields(
+  //       {
+  //         name: '\n Nos commandes :',
+  //         value:
+  //           'Voici toutes les commandes que vous pouvez être amené a faire :',
+  //       },
+  //       { name: '\u200B', value: '\u200B' },
+  //       {
+  //         name: '**__zlx.zuulaxx__** ou **__zlx.zlx__** :',
+  //         value: 'Donne des info sur zuulaxx^^',
+  //         inline: true,
+  //       },
+  //       {
+  //         name: '**__zlx.hello__** :',
+  //         value: 'Tu reçois un mp 🎉',
+  //         inline: true,
+  //       },
+  //       {
+  //         name: '**__zlx.info (@user)__** :',
+  //         value: 'Tu reçois des infos sur toi ou sur (@user)',
+  //         inline: true,
+  //       },
+  //       {
+  //         name: '**__zlx.play, zlx.stop, zlx.replay__** :',
+  //         value: 'Joue ▶, arête ⏹️ ou recommence 🔁 une musique',
+  //         inline: true,
+  //       },
+  //       {
+  //         name: '**__zlx.bee__** :',
+  //         value: "Envoie une image d'abeilles random",
+  //         inline: true,
+  //       },
+  //       {
+  //         name: '**__zlx.stats__** :',
+  //         value: 'Donne des statistiques sur zlx-bot',
+  //         inline: true,
+  //       },
+  //       { name: '\u200B', value: '\u200B' }
+  //     )
+  //     .addField(
+  //       "**__Nombres d'utilisateurs :__**",
+  //       `**${Client.guilds.cache
+  //         .map((g) => g.memberCount)
+  //         .reduce((a, b) => a + b)}**`,
+  //       true
+  //     )
+  //     .setTimestamp()
+  //     .setFooter({
+  //       text: `${message.author.tag} a demandé de l'aide !`,
+  //     });
+  //   message.channel.send({ embeds: [exampleEmbed] }).catch(),
+  //     console.log('\n The **help** command has been sent 😄 '),
+  //     console.log('by', message.author.tag, '\n'),
+  //     console.log('le', fullDate);
+  // }
+  // "help"
 
   if (message.content === prefix + 'stats') {
     const statsEmbed = new MessageEmbed()
@@ -436,23 +437,22 @@ Client.on('messageCreate', (message) => {
       }
 */
 
-  //Slash,test
-  const data = new SlashCommandBuilder()
-    .setName('ping')
-    .setDescription('Renvoie "pong !"');
+  //   Slash,test
+  //   const data = new SlashCommandBuilder()
+  //     .setName('help')
+  //     .setDescription("Renvoie de l'aide");
 
-  //Client.application.commands.create(data);
-  Client.guilds.cache.get('986698834853892106').commands.create(data);
-  console.log('application (/) commands *Ready*');
+  // //Client.application.commands.create(data), console.log('application (/) commands *Ready*');
+  // //Client.guilds.cache.get('986698834853892106').commands.create(data), console.log('application (/) commands *Ready*');
 
-  Client.on('interactionCreate', (interaction) => {
-    if (interaction.isCommand()) {
-      if (interaction.commandName === 'ping') {
-        message = await interaction.reply("pong !");
-      }
-    }
-  });
-  //Slash,test
+  //   Client.on('interactionCreate', (interaction) => {
+  //     if (interaction.isCommand()) {
+  //       if (interaction.commandName === 'help') {
+  //         message = interaction.reply({ embeds: [exampleEmbed] });
+  //       }
+  //     }
+  //   });
+  //   Slash,test
 
 });
 
@@ -555,6 +555,53 @@ Client.on('messageCreate', (message) => {
   }
 });
 //"Voice-Play"
+
+//Handler info
+let SlashCommands = [];
+let Events = [];
+let Commands = [];
+
+//Slash Command Handler
+const SlashCommandFiles = fs.readdirSync("./slash").filter(fl => fl.endsWith(".js"));
+Client.commands = new Collection();
+
+SlashCommandFiles.forEach(async file => {
+  const command = require(`./slash/${file}`)
+  SlashCommands.push(command.help.name)
+  Client.commands.set(command.help.name, command)
+})
+
+Client.on('interactionCreate', async interaction => {
+  if (!interaction.isCommand() && !interaction.isMessageContextMenu() && !interaction.isContextMenu() && !interaction.isUserContextMenu()) return
+  const authorPerms = interaction.channel.permissionsFor(interaction.member)
+
+  const command = Client.commands.get(interaction.commandName);
+
+  if (!command) return;
+
+  if (command.help.enable !== true) return interaction.reply({ content: 'command.disabled', ephemeral: true })
+  if (!authorPerms.has(command.help.permission)) return interaction.reply({ content: 'command.notEnoughPermission', ephemeral: true })
+
+  try {
+    await command.execute(interaction, Client);
+  } catch (error) {
+
+    const embed = new MessageEmbed()
+      .setTitle('error.unexpected')
+      .setColor('RED')
+      .setDescription('```' + error + '```')
+
+    await interaction.reply({ embeds: [embed], ephemeral: true });
+  }
+});
+
+//Commands handler
+const CommandFiles = fs.readdirSync("./commands").filter(fl => fl.endsWith(".js"));
+CommandFiles.forEach((f, i) => {
+  let props = require(`./commands/${f}`)
+  Client.commands.set(props.help.name, props)
+  Commands.push(props.help.name)
+})
 
 Client.login(ClientSettings.token);
 console.log('\n Bot opérationnel');

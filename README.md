@@ -41,7 +41,7 @@ _______________
 <strong>
 <u>Nos commandes :</u>
 
-* <u>*zlx.aide*</u>
+* <u>*zlx.help*</u>
 
 Pour plus d'infos rendez vous sur notre <u>*[Discord](https://discord.gg/aBsvuX9b2Q)*</u> <br /> ou faites la commande !
 </strong>

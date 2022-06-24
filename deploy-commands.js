@@ -1,33 +1,69 @@
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
-const { token } = require('./config.json');
-const fs = require('node:fs');
+const fs = require('fs');
+const ClientSettings = require('./ClientSettings.json');
 
 const commands = [];
-const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
-
-// Place your client and guild ids here
-const clientId = '986711914077892608';
-const guildId = '876543210987654321';
+const commandFiles = fs.readdirSync('./slash').filter(file => file.endsWith('.js'));
 
 for (const file of commandFiles) {
-	const command = require(`./commands/${file}`);
-	commands.push(command.data.toJSON());
+	const command = require(`./slash/${file}`);
+	commands.push(command.help);
 }
 
-const rest = new REST({ version: '9' }).setToken(token);
+const rest = new REST({ version: '9' }).setToken(ClientSettings.token);
+
+//Deleting older Guild Commands
+// rest.get(Routes.applicationGuildCommands('986711914077892608', '986698834853892106'))
+// 	.then(data => {
+// 		const promises = [];
+// 		for (const command of data) {
+// 			const deleteUrl = `${Routes.applicationGuildCommands('986711914077892608', '986698834853892106')}/${command.id}`;
+// 			promises.push(rest.delete(deleteUrl));
+// 		}
+// 		console.log('Delete GUILD application (/) commands.')
+// 		return Promise.all(promises);
+// });
+
+//Deleting older Client Commands
+// rest.get(Routes.applicationCommands('986711914077892608'))
+// 	.then(data => {
+// 		const promises = [];
+// 		for (const command of data) {
+// 			const deleteUrl = `${Routes.applicationCommands('986711914077892608')}/${command.id}`;
+// 			promises.push(rest.delete(deleteUrl));
+// 		}
+// 		console.log('Delete CLIENT application (/) commands.')
+// 		return Promise.all(promises);
+// });
+
+//Client Deploy
 
 (async () => {
 	try {
 		console.log('Started refreshing application (/) commands.');
-
 		await rest.put(
-			Routes.applicationGuildCommands(clientId, guildId),
+			Routes.applicationCommands('986711914077892608'),
 			{ body: commands },
 		);
-
 		console.log('Successfully reloaded application (/) commands.');
 	} catch (error) {
 		console.error(error);
 	}
 })();
+
+//Guild Deploy
+// (async () => {
+// 	try {
+// 		console.log('Started refreshing application (/) commands.');
+//
+// 		await rest.put(
+// 			Routes.applicationGuildCommands(process.env.CLIENTID, process.env.GUILDID),
+// 			{ body: commands },
+// 		);
+
+// 		console.log('Successfully reloaded application (/) commands.');
+// 	} catch (error) {
+// 		console.error(error);
+// 	}
+// })();
