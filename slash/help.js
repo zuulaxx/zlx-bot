@@ -54,7 +54,7 @@ module.exports.execute = async (interaction, Client) => {
         )
         .setTimestamp()
         .setFooter({
-            text: `${message.author.tag} a demandé de l'aide !`,
+            text: `Un Utilisateur a demandé de l'aide !`,
         });
     await interaction.reply({ embeds: [exampleEmbed], ephemeral: false });
 }
