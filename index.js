@@ -619,7 +619,6 @@ Client.on('interactionCreate', async interaction => {
   }
 });
 
-let prefix = "zlx."
 //Commands handler
 const CommandFiles = fs.readdirSync("./commands").filter(fl => fl.endsWith(".js"));
 CommandFiles.forEach((f, i) => {
