@@ -52,6 +52,11 @@ module.exports.execute = async (interaction, Client) => {
                 .reduce((a, b) => a + b)}**`,
             true
         )
+        .addField(
+            "**__⚠️⚠️⚠️__**",
+            "**Vous pouvez aussi utiliser `/` pour voire les commandes qui ne sont pas ici !**",
+            true
+        )
         .setTimestamp()
         .setFooter({
             text: `Un Utilisateur a demandé de l'aide !`,
