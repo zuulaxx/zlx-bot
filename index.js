@@ -40,19 +40,20 @@ Client.on('ready', async () => {
   console.log(`Démarage le ${fullDate}`);
 
   //statue
-  setInterval(function () {
-    let status = [
-      `Il y a ${Client.guilds.cache
-        .map((g) => g.memberCount)
-        .reduce((a, b) => a + b)} utilisateurs`,
-      'vos messages 😊',
-    ];
-    let rstatus = Math.floor(Math.random() * status.length);
+  // setInterval(function () {
+  //   let status = [
+  //     `Il y a ${Client.guilds.cache
+  //       .map((g) => g.memberCount)
+  //       .reduce((a, b) => a + b)} utilisateurs`,
+  //     'vos messages 😊',
+  //   ];
+  //   let rstatus = Math.floor(Math.random() * status.length);
 
-    Client.user.setActivity(status[rstatus], { type: 'WATCHING' });
-  }, 10000);
+  //   Client.user.setActivity(status[rstatus], { type: 'WATCHING' });
+  // }, 10000);
   //statue
 });
+
 
 Client.on('messageCreate', (message) => {
   if (message.author.bot) return;
@@ -332,52 +333,52 @@ Client.on('messageCreate', (message) => {
   //}
 
   //"bee"
-/*
-  const bee = [
-    '1.jpg',
-    '2.jpg',
-    '3.jpg',
-    '4.jpg',
-    '5.jpg',
-    '6.jpg',
-    '7.jpg',
-    '8.jpg',
-    '9.jpg',
-    '10.jpg',
-  ];
-
-  function rdmm() {
-    return bee[Math.floor(Math.random() * bee.length)];
-  }
-
-  if (message.content === prefix + 'bee') {
-    const promise = fs.promises.readFile(
-      getPath(`images/animals-img/${rdmm()}`)
-    ); //this image exists
-    message.react('🐝'),
-      Promise.resolve(promise)
-        .then(function (buffer) {
-          const exampleEmbed = new MessageEmbed()
-            .setColor('#ffff00')
-            .setTitle('Qui a invoqué(e) une abeille :bee: ?')
-            .setFooter({
-              text: `${message.author.tag} a invoqué(e) byzzbyzzzz l'abeille 🐝`,
-            });
-          message.channel
-            .send({
-              embeds: [exampleEmbed],
-              files: [{ attachment: buffer }],
-            })
-            .catch(),
-            console.log(
-              '\n',
-              message.author.tag,
-              'a invoqué(e) une **abeille**'
-            ),
-            console.log('le', fullDate);
-        })
-        .catch();
-  }*/
+  /*
+    const bee = [
+      '1.jpg',
+      '2.jpg',
+      '3.jpg',
+      '4.jpg',
+      '5.jpg',
+      '6.jpg',
+      '7.jpg',
+      '8.jpg',
+      '9.jpg',
+      '10.jpg',
+    ];
+  
+    function rdmm() {
+      return bee[Math.floor(Math.random() * bee.length)];
+    }
+  
+    if (message.content === prefix + 'bee') {
+      const promise = fs.promises.readFile(
+        getPath(`images/animals-img/${rdmm()}`)
+      ); //this image exists
+      message.react('🐝'),
+        Promise.resolve(promise)
+          .then(function (buffer) {
+            const exampleEmbed = new MessageEmbed()
+              .setColor('#ffff00')
+              .setTitle('Qui a invoqué(e) une abeille :bee: ?')
+              .setFooter({
+                text: `${message.author.tag} a invoqué(e) byzzbyzzzz l'abeille 🐝`,
+              });
+            message.channel
+              .send({
+                embeds: [exampleEmbed],
+                files: [{ attachment: buffer }],
+              })
+              .catch(),
+              console.log(
+                '\n',
+                message.author.tag,
+                'a invoqué(e) une **abeille**'
+              ),
+              console.log('le', fullDate);
+          })
+          .catch();
+    }*/
   //"bee"
 
   /*
@@ -606,31 +607,31 @@ Client.on('interactionCreate', async interaction => {
 //Commands handler
 const CommandFiles = fs.readdirSync("./commands").filter(fl => fl.endsWith(".js"));
 CommandFiles.forEach((f, i) => {
-    let props = require(`./commands/${f}`)
-    Client.commands.set(props.help.name, props)
-    Commands.push(props.help.name)
+  let props = require(`./commands/${f}`)
+  Client.commands.set(props.help.name, props)
+  Commands.push(props.help.name)
 })
 
-Client.on('messageCreate', async(message) => {
-    if (message.author.bot) return;
-    const authorPerms = message.channel.permissionsFor(message.author)
-    const args = message.content.slice(prefix.length).trim().split(/ +/g);
-    const command = args.shift().toLowerCase();
-    let cmd = Client.commands.get(command)
-    if (cmd) {
-        message.delete();
-        let notEnoughPermission = new MessageEmbed().setTitle("Pas assez de permission").setColor("RED")
-        let unexpectedError = new MessageEmbed().setTitle("erreur non attendu").setColor("RED")
-        let commandDisabled = new MessageEmbed().setTitle("Commande desactiver").setColor("RED")
+Client.on('messageCreate', async (message) => {
+  if (message.author.bot) return;
+  const authorPerms = message.channel.permissionsFor(message.author)
+  const args = message.content.slice(prefix.length).trim().split(/ +/g);
+  const command = args.shift().toLowerCase();
+  let cmd = Client.commands.get(command)
+  if (cmd) {
+    message.delete();
+    let notEnoughPermission = new MessageEmbed().setTitle("Pas assez de permission").setColor("RED")
+    let unexpectedError = new MessageEmbed().setTitle("erreur non attendu").setColor("RED")
+    let commandDisabled = new MessageEmbed().setTitle("Commande desactiver").setColor("RED")
 
-        if(!authorPerms.has(cmd.help.permission)) return message.channel.send({embeds: [notEnoughPermission]})
-        if(cmd.help.name !== command) return message.channel.send({embeds: [unexpectedError]})
-        if(cmd.help.enable === false) return message.channel.send({embeds: [commandDisabled]})
-        cmd.execute(Client, message, args, connection, subscription, exitVocal)
-    } else if(message.content.startsWith(prefix)) {
-        message.delete();
-        message.channel.send({content: "Commande introuvable"});
-    }
+    if (!authorPerms.has(cmd.help.permission)) return message.channel.send({ embeds: [notEnoughPermission] })
+    if (cmd.help.name !== command) return message.channel.send({ embeds: [unexpectedError] })
+    if (cmd.help.enable === false) return message.channel.send({ embeds: [commandDisabled] })
+    cmd.execute(Client, message, args, connection, subscription, exitVocal)
+  } else if (message.content.startsWith(prefix)) {
+    message.delete();
+    message.channel.send({ content: "Commande introuvable" });
+  }
 })
 
 Client.login(ClientSettings.token);
