@@ -2,7 +2,7 @@ const { MessageActionRow, MessageButton, MessageEmbed, Permissions } = require('
 
 module.exports.execute = async (Client, message, args) => {
     await require('../deploy-commands')
-    await message.reply("Veuillez regarder la console pour des erreurs"), console.log("The deployment command has been sent successfully")
+    await message.channel.send("Veuillez regarder la console pour des erreurs").then(() => {console.log("The deployment command has been sent successfully")})
 }
 
 module.exports.help = {
@@ -11,4 +11,4 @@ module.exports.help = {
     permission: "ADMINISTRATOR", //Required permissions to execute the commands (if you want no permissions it's recommanded to put SEND_MESSAGES)
     enable: true, //If the command is under maintenance
     show: true //If the command is showed on the help menu
-}, console.log("The deployment command was loaded successfully");
+}//, console.log("The deployment command was loaded successfully");

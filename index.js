@@ -1,13 +1,11 @@
 const Discord = require('discord.js');
+const { MessageEmbed, Collection, SlashCommandBuilder, Formatters } = require('discord.js');
 require('@discordjs/voice');
 const ClientSettings = require('./ClientSettings.json');
 var ffmpeg = require('ffmpeg');
 require('ffmpeg-static');
-const { SlashCommandBuilder } = require('@discordjs/builders');
-const data = new SlashCommandBuilder();
+// const data = new SlashCommandBuilder();
 const fs = require('fs');
-const { MessageEmbed, Collection } = require('discord.js');
-const { Formatters } = require('discord.js');
 const Client = new Discord.Client({
   intents: [
     Discord.Intents.FLAGS.GUILDS,
@@ -60,6 +58,7 @@ Client.on('messageCreate', (message) => {
   if (message.author.bot) return;
   const args = message.content.slice(prefix.length).split(/ +/g).slice(1);
 
+  /*
   // "Les MP"
   if (message.content === prefix + 'hello') {
     message.author.createDM().then((channel) => {
@@ -73,7 +72,7 @@ Client.on('messageCreate', (message) => {
       console.log('le', fullDate);
   }
   // "Les MP"
-
+  
   // "zuulaxx ou zlx"
   if (message.content === prefix + 'zlx') {
     message.reply('**__Le site web de zuulaxx : https://zuulaxx.ml/__**'),
@@ -219,7 +218,7 @@ Client.on('messageCreate', (message) => {
       console.log('by', message.author.tag, '\n'),
       console.log('le', fullDate);
   }
-
+*/
   //git
   // if (message.content === prefix + 'git') {
   //   const gitEmbed = new MessageEmbed()
@@ -246,41 +245,21 @@ Client.on('messageCreate', (message) => {
 
   // TODO : Vérifier
   if (
-    message.content.includes('slt') ||
-    message.content.includes('bonjour') ||
-    message.content.includes('yo') ||
-    message.content.includes('salut') ||
-    message.content.includes('bjr') ||
-    message.content.includes('bonsoir') ||
-    message.content.includes('coucou') ||
-    message.content.includes('hey') ||
-    message.content.includes('Slt') ||
-    message.content.includes('Bonjour') ||
-    message.content.includes('Yo') ||
-    message.content.includes('Salut') ||
-    message.content.includes('Bjr') ||
-    message.content.includes('Bonsoir') ||
-    message.content.includes('Coucou') ||
-    message.content.includes('Hey')
+    message.content.toLowerCase().includes('slt') ||
+    message.content.toLowerCase().includes('bonjour') ||
+    message.content.toLowerCase().includes('yo') ||
+    message.content.toLowerCase().includes('salut') ||
+    message.content.toLowerCase().includes('bjr') ||
+    message.content.toLowerCase().includes('bonsoir') ||
+    message.content.toLowerCase().includes('coucou') ||
+    message.content.toLowerCase().includes('hey')
   ) {
     message.channel.send(`Bonjour ${message.author.username}`);
-  }
-
-  // "on"
-  else if (message.content === prefix + 'on') {
-    message.channel.send('```Démarage du programme```');
-  }
-  // "off"
-  else if (message.content === prefix + 'off') {
-    message.channel.send('```Arrêt du programme```');
-  }
-  // "restart"
-  else if (message.content === prefix + 'restart') {
-    message.channel.send('```Redémarage du programme```');
   }
   /*****************************************
    ******* BEGINNING OF INFO COMMAND *******
    *****************************************/
+  /*
   let user;
   const moment = require('moment');
 
@@ -332,6 +311,7 @@ Client.on('messageCreate', (message) => {
       console.log('by', message.author.tag, '\n'),
       console.log('le', fullDate);
   }
+  */
   /*****************************************
    ********** END OF INFO COMMAND **********
    *****************************************/
@@ -352,7 +332,7 @@ Client.on('messageCreate', (message) => {
   //}
 
   //"bee"
-
+/*
   const bee = [
     '1.jpg',
     '2.jpg',
@@ -397,9 +377,10 @@ Client.on('messageCreate', (message) => {
             console.log('le', fullDate);
         })
         .catch();
-  }
+  }*/
   //"bee"
 
+  /*
   //"Say"
   if (message.content.startsWith('zlx.say')) {
     if (!message.member.permissions.has('MANAGE_MESSAGES')) {
@@ -431,6 +412,7 @@ Client.on('messageCreate', (message) => {
       `\n The **say** command has been sent 😄 by ${message.author.tag} le ${fullDate}`
     );
   }
+  */
   //"Say"
 
   /*  
@@ -501,6 +483,7 @@ function exitVocal() {
   if (subscription != null) subscription.unsubscribe();
 }
 
+/*
 Client.on('messageCreate', (message) => {
   if (message.author.bot) return;
   const args = message.content.slice(prefix.length).split(/ +/g).slice(1);
@@ -577,7 +560,7 @@ Client.on('messageCreate', (message) => {
       'a utilisé **replay** **musique** \n'
     );
   }
-});
+}); */
 //"Voice-Play"
 
 //Handler info
@@ -597,18 +580,19 @@ SlashCommandFiles.forEach(async file => {
 
 Client.on('interactionCreate', async interaction => {
   if (!interaction.isCommand() && !interaction.isMessageContextMenu() && !interaction.isContextMenu() && !interaction.isUserContextMenu()) return
-  const authorPerms = interaction.channel.permissionsFor(interaction.member)
+  //const authorPerms = interaction.channel.permissionsFor(interaction.member)
 
   const command = Client.commands.get(interaction.commandName);
 
   if (!command) return;
 
   if (command.help.enable !== true) return interaction.reply({ content: 'command.disabled', ephemeral: true })
-  if (!authorPerms.has(command.help.permission)) return interaction.reply({ content: 'command.notEnoughPermission', ephemeral: true })
+  //if (!authorPerms.has(command.help.permission)) return interaction.reply({ content: 'command.notEnoughPermission', ephemeral: true })
 
   try {
     await command.execute(interaction, Client);
   } catch (error) {
+    console.log(error)
 
     const embed = new MessageEmbed()
       .setTitle('error.unexpected')
@@ -642,7 +626,7 @@ Client.on('messageCreate', async(message) => {
         if(!authorPerms.has(cmd.help.permission)) return message.channel.send({embeds: [notEnoughPermission]})
         if(cmd.help.name !== command) return message.channel.send({embeds: [unexpectedError]})
         if(cmd.help.enable === false) return message.channel.send({embeds: [commandDisabled]})
-        cmd.execute(Client, message, args)
+        cmd.execute(Client, message, args, connection, subscription, exitVocal)
     } else if(message.content.startsWith(prefix)) {
         message.delete();
         message.channel.send({content: "Commande introuvable"});
