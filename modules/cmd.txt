@@ -9,3 +9,5 @@ npm i moment --save
 npm i npm-check-updates --save (truck pour les maj)
 
 ncu -u (rechercher les maj)
+
++ ce qu'il y a dans le package.json
