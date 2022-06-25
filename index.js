@@ -619,12 +619,35 @@ Client.on('interactionCreate', async interaction => {
   }
 });
 
+let prefix = "zlx."
 //Commands handler
-const CommandFiles = fs.readdirSync("./slash").filter(fl => fl.endsWith(".js"));
+const CommandFiles = fs.readdirSync("./commands").filter(fl => fl.endsWith(".js"));
 CommandFiles.forEach((f, i) => {
-  let props = require(`./slash/${f}`)
-  Client.commands.set(props.help.name, props)
-  Commands.push(props.help.name)
+    let props = require(`./commands/${f}`)
+    Client.commands.set(props.help.name, props)
+    Commands.push(props.help.name)
+})
+
+Client.on('messageCreate', async(message) => {
+    if (message.author.bot) return;
+    const authorPerms = message.channel.permissionsFor(message.author)
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const command = args.shift().toLowerCase();
+    let cmd = Client.commands.get(command)
+    if (cmd) {
+        message.delete();
+        let notEnoughPermission = new MessageEmbed().setTitle("Pas assez de permission").setColor("RED")
+        let unexpectedError = new MessageEmbed().setTitle("erreur non attendu").setColor("RED")
+        let commandDisabled = new MessageEmbed().setTitle("Commande desactiver").setColor("RED")
+
+        if(!authorPerms.has(cmd.help.permission)) return message.channel.send({embeds: [notEnoughPermission]})
+        if(cmd.help.name !== command) return message.channel.send({embeds: [unexpectedError]})
+        if(cmd.help.enable === false) return message.channel.send({embeds: [commandDisabled]})
+        cmd.execute(Client, message, args)
+    } else if(message.content.startsWith(prefix)) {
+        message.delete();
+        message.channel.send({content: "Commande introuvable"});
+    }
 })
 
 Client.login(ClientSettings.token);
