@@ -41,6 +41,8 @@ const rest = new REST({ version: '9' }).setToken(ClientSettings.token);
 
 (async () => {
 	try {
+		// Client.application.commands.create(data), console.log('application (/) commands *Ready*');
+        // Client.guilds.cache.get('986698834853892106').commands.create(data), console.log('application (/) commands *Ready*');
 		console.log('Started refreshing application (/) commands.');
 		await rest.put(
 			Routes.applicationCommands('986711914077892608'),
@@ -50,7 +52,8 @@ const rest = new REST({ version: '9' }).setToken(ClientSettings.token);
 	} catch (error) {
 		console.error(error);
 	}
-})();
+})
+();
 
 //Guild Deploy
 // (async () => {

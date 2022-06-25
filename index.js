@@ -220,6 +220,30 @@ Client.on('messageCreate', (message) => {
       console.log('le', fullDate);
   }
 
+  //git
+  // if (message.content === prefix + 'git') {
+  //   const gitEmbed = new MessageEmbed()
+  //     .setColor('#3160FF')
+  //     .setTitle('Le repository github du bot !')
+  //     .addFields(
+  //       { name: 'Voici tout ce que vous pouvez avoir besion sur le bot', value: '(Le plagiat est interdit)\u200B' },
+  //       //{ name: '\u200B', value: '\u200B' },
+  //       {
+  //         name: "Lien 👨‍💻 :",
+  //         value: ('[Source de zlx-bot](https://github.com/zuulaxx/zlx-bot)'),
+  //         inline: false,
+  //       },
+  //     )
+  //     .setTimestamp()
+  //     .setFooter({
+  //       text: `${message.author.tag} a demandé le github !`,
+  //     });
+  //   message.channel.send({ embeds: [gitEmbed] }).catch(),
+  //     console.log('\n The **git** command has been sent 😄 '),
+  //     console.log('by', message.author.tag, '\n'),
+  //     console.log('le', fullDate);
+  // }
+
   // TODO : Vérifier
   if (
     message.content.includes('slt') ||
