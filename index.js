@@ -317,7 +317,7 @@ Client.on('messageCreate', (message) => {
         ':clock: Création du compte:',
         `Le ${moment
           .utc(user.createdAt)
-          .format('DD/MM/YYYY à HH:mm:ss')} <t:${parseInt(
+          .format('DD/MM/YYYY à HH:mm')} <t:${parseInt(
             user.createdAt / 1000
           )}:R>`,
         true
@@ -620,9 +620,9 @@ Client.on('interactionCreate', async interaction => {
 });
 
 //Commands handler
-const CommandFiles = fs.readdirSync("./commands").filter(fl => fl.endsWith(".js"));
+const CommandFiles = fs.readdirSync("./slash").filter(fl => fl.endsWith(".js"));
 CommandFiles.forEach((f, i) => {
-  let props = require(`./commands/${f}`)
+  let props = require(`./slash/${f}`)
   Client.commands.set(props.help.name, props)
   Commands.push(props.help.name)
 })
