@@ -40,17 +40,17 @@ Client.on('ready', async () => {
   console.log(`Démarage le ${fullDate}`);
 
   //statue
-  // setInterval(function () {
-  //   let status = [
-  //     `Il y a ${Client.guilds.cache
-  //       .map((g) => g.memberCount)
-  //       .reduce((a, b) => a + b)} utilisateurs`,
-  //     'vos messages 😊',
-  //   ];
-  //   let rstatus = Math.floor(Math.random() * status.length);
+  setInterval(function () {
+    let status = [
+      `Il y a ${Client.guilds.cache
+        .map((g) => g.memberCount)
+        .reduce((a, b) => a + b)} utilisateurs`,
+      'vos messages 😊',
+    ];
+    let rstatus = Math.floor(Math.random() * status.length);
 
-  //   Client.user.setActivity(status[rstatus], { type: 'WATCHING' });
-  // }, 10000);
+    Client.user.setActivity(status[rstatus], { type: 'WATCHING' });
+  }, 10000);
   //statue
 });
 
