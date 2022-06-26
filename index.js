@@ -4,6 +4,7 @@ require('@discordjs/voice');
 const ClientSettings = require('./ClientSettings.json');
 var ffmpeg = require('ffmpeg');
 require('ffmpeg-static');
+const moment = require('moment');
 // const data = new SlashCommandBuilder();
 const fs = require('fs');
 const Client = new Discord.Client({
@@ -11,6 +12,7 @@ const Client = new Discord.Client({
     Discord.Intents.FLAGS.GUILDS,
     Discord.Intents.FLAGS.GUILD_MESSAGES,
     Discord.Intents.FLAGS.DIRECT_MESSAGES,
+    Discord.Intents.FLAGS.GUILD_MEMBERS,
     Discord.Intents.FLAGS.DIRECT_MESSAGE_REACTIONS,
     Discord.Intents.FLAGS.GUILD_VOICE_STATES,
   ],
@@ -55,6 +57,24 @@ Client.on('ready', async () => {
 });
 
 
+//MESSAGE D'ARRIVÉ
+Client.on("guildMemberAdd", member => {
+
+  const ARREmbed = new MessageEmbed()
+    .setColor('#000000')
+    .setTitle(`Information sur ${member.user.tag} :`)
+    .addField('😊 Tag du compte:', `${member.user.tag}`, true)
+    .addField(':id: ID du compte:', `${member.user.id}`, true)
+    .addField(':clock: Création du compte:', `Le ${moment.utc(member.user.createdAt).format('DD/MM/YYYY à HH:mm')} <t:${parseInt(member.user.createdAt / 1000)}:R>`, true)
+    .addField('🤖 Robot :', `${member.user.bot ? 'Oui' : 'Non'}`, true)
+    .addField('Avatar :', `ㅤ`, false)
+    .setImage(member.user.displayAvatarURL({ dynamic: true }), false);
+
+  member.guild.channels.cache.find(channel => channel.id === "986698834853892109").send({ embeds: [ARREmbed] });
+});
+//MESSAGE D'ARRIVÉ
+
+
 Client.on('messageCreate', (message) => {
   if (message.author.bot) return;
   const args = message.content.slice(prefix.length).split(/ +/g).slice(1);
@@ -88,7 +108,9 @@ Client.on('messageCreate', (message) => {
       console.log('by', message.author.tag, '\n'),
       console.log('le', fullDate);
   }
+  */
 
+  /*
   // "help"
   // else if (message.content === prefix + 'help') {
   //   message.react('✅');
@@ -262,7 +284,6 @@ Client.on('messageCreate', (message) => {
    *****************************************/
   /*
   let user;
-  const moment = require('moment');
 
   if (message.content.startsWith(prefix + 'info')) {
     message.channel.send('Chargement... 🚶‍♂️🚶🚶‍♂️').then((newMessage) => {
