@@ -62,7 +62,8 @@ Client.on("guildMemberAdd", member => {
 
   const ARREmbed = new MessageEmbed()
     .setColor('#000000')
-    .setTitle(`Information sur ${member.user.tag} :`)
+    .setTitle(`Bienvenue ${member.user.tag} sur **The Dev House** !`)
+    .setDescription(`Voici quelques information supplémentaires sur <@${member.user.id}> :`)
     .addField('😊 Tag du compte:', `${member.user.tag}`, true)
     .addField(':id: ID du compte:', `${member.user.id}`, true)
     .addField(':clock: Création du compte:', `Le ${moment.utc(member.user.createdAt).format('DD/MM/YYYY à HH:mm')} <t:${parseInt(member.user.createdAt / 1000)}:R>`, true)
@@ -70,7 +71,7 @@ Client.on("guildMemberAdd", member => {
     .addField('Avatar :', `ㅤ`, false)
     .setImage(member.user.displayAvatarURL({ dynamic: true }), false);
 
-  member.guild.channels.cache.find(channel => channel.id === "986698834853892109").send({ embeds: [ARREmbed] });
+  member.guild.channels.cache.find(channel => channel.id === "985155904422965358").send({ embeds: [ARREmbed] });
 });
 //MESSAGE D'ARRIVÉ
 
