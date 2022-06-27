@@ -1,30 +1,13 @@
 const { MessageActionRow, MessageButton, MessageEmbed } = require('discord.js');
 
-module.exports.execute = async (interaction, Client, message) => {
-    const gitEmbed = new MessageEmbed()
-        .setColor('#3160FF')
-        .setTitle('Le repository github du bot !')
-        .addFields(
-            { name: 'Voici tout ce que vous pouvez avoir besion sur le bot', value: '(Le plagiat est interdit)\u200B' },
-            //{ name: '\u200B', value: '\u200B' },
-            {
-                name: "Lien 👨‍💻 :",
-                value: ('[Source de zlx-bot](https://github.com/zuulaxx/zlx-bot)'),
-                inline: false,
-            },
-        )
-        .setTimestamp()
-        .setFooter({
-            text: `Un Utilisateur a demandé le github !`,
-        });
-        await interaction.reply({ embeds: [gitEmbed], ephemeral: true }).catch(),
-        console.log(`\n The **git** command has been sent by ${message.author.tag} à utilisé **say** 😄`);
+module.exports.execute = async (interaction, message) => {
+    await interaction.reply("Trouve le : 👒\n||🌊|| ||🌊|| ||🌊||\n||👒|| ||🌊|| ||🌊||\n||🌊|| ||🌊|| ||🌊||"),({ephemeral: true}), console.log(`\n The **game** command has been sent by ${message.author.tag} à utilisé **say** 😄`);
 }
 
 //              Slash Commands
 module.exports.help = {
-    name: "git", //Name of the command
-    description: "Avoir le lien du repository github du bot", //Description of the command
+    name: "Game", //Name of the command
+    description: "Renvoie un petit jeux", //Description of the command
     type: 1, //Type of the command. Read the readme.md file for more information
     // options: [
     //     {
@@ -33,7 +16,7 @@ module.exports.help = {
     //         description: "description for the test1 arguments", //Option description
     //         required: false //Does the value need to be put in
     //     },
-    // ], //Option of the command
+    //], //Option of the command
     permission: "SEND_MESSAGES", //Required permission to use the command
     enable: true, //If the command is under maintenance mode
     show: true //If the command is show on the help menu

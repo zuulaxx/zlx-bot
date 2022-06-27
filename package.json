@@ -1,9 +1,9 @@
 {
-  "name": "npm-deploy",
+  "name": "zlx-bot",
   "version": "1.0.0",
-  "description": "npm-deploy start deploy.js",
+  "description": "zlx-bot discord by zuulaxx",
   "scripts": {
-    "start": "node ./commands/deploy.js"
+    "deploy": "node ./deploy-commands.js"
   },
   "dependencies": {
     "@discordjs/builders": "^0.15.0",
