@@ -1,6 +1,6 @@
 const { MessageActionRow, MessageButton, MessageEmbed, Permissions } = require('discord.js');
 
-module.exports.execute = async(client, message, args) => {
+module.exports.execute = async(Client, message, args) => {
       if (
         message.content.includes('@everyone') ||
         message.content.includes('@here')
@@ -17,7 +17,7 @@ module.exports.execute = async(client, message, args) => {
       }
       message.delete();
   
-      message.channel.send({content: sayMessage});
+      message.channel.send({content: sayMessage}), console.log(`${message.author.tag} à utilisé **say**`)
 }
 
 module.exports.help = {
