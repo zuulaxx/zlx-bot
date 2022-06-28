@@ -1,7 +1,7 @@
 const { MessageActionRow, MessageButton, MessageEmbed } = require('discord.js');
 
 module.exports.execute = async (interaction, message) => {
-    await interaction.reply({content: "Trouve le : 🤖 \n||👨|| ||👨|| ||👨||\n||🤖|| ||👨|| ||👨||\n||👨|| ||👨|| ||👨||", ephemeral: true}), console.log(`\n The **game** command has been sent by ${message.author.tag} à utilisé **say** 😄`);
+   await interaction.reply({content: "Trouve le : 🤖 \n||👨|| ||👨|| ||👨||\n||🤖|| ||👨|| ||👨||\n||👨|| ||👨|| ||👨||", ephemeral: true});
 }
 
 //              Slash Commands
