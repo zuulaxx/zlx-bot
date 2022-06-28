@@ -1,6 +1,6 @@
 const { MessageActionRow, MessageButton, MessageEmbed } = require('discord.js');
 
-module.exports.execute = async (interaction, Client, message) => {
+module.exports.execute = async (interaction, guild, message) => {
     const { MessageEmbed } = require('discord.js');
     const moment = require('moment');
 
@@ -17,7 +17,7 @@ module.exports.execute = async (interaction, Client, message) => {
         HIGH: '(╯°□°）╯︵ ┻━┻',
         VERY_HIGH: '┻━┻ ﾐヽ(ಠ益ಠ)ノ彡┻━┻'
     };
-
+    
     const regions = {
         brazil: 'Brazil',
         europe: 'Europe',
@@ -33,62 +33,50 @@ module.exports.execute = async (interaction, Client, message) => {
         'us-west': 'US West',
         'us-south': 'US South'
     };
+    const roles = interaction.guild.roles.cache.sort((a, b) => b.position - a.position).map(role => role.toString());
+    const members = interaction.guild.members.cache;
+    const channels = interaction.guild.channels.cache;
+    const emojis = interaction.guild.emojis.cache;
 
-    module.exports = {
-        name: 'server',
-        aliases: [],
-        description: 'server info...',
-        cooldown: 5,
-        guildOnly: false,
-        args: false,
-        run: async (client, message, args) => {
-            const roles = message.guild.roles.cache.sort((a, b) => b.position - a.position).map(role => role.toString());
-            const members = message.guild.members.cache;
-            const channels = message.guild.channels.cache;
-            const emojis = message.guild.emojis.cache;
+    const serviembed = new MessageEmbed()
+        .setDescription(`**Server Info**`)
+        .setColor('BLACK')
+        .setThumbnail(interaction.guild.iconURL({ dynamic: true }))
+        .addField('General', [
+            `**Name:** ${interaction.guild.name}`,
+            `**ID:** ${interaction.guild.id}`,
+            //`**Owner:** ${interaction.guild.owner.tag} (${interaction.guild.ownerID})`,
+            `**Region:** ${regions[interaction.guild.region]}`,
+            `**Boost Tier:** ${interaction.guild.premiumTier ? `Tier ${interaction.guild.premiumTier}` : 'None'}`,
+            `**Explicit Filter:** ${filterLevels[interaction.guild.explicitContentFilter]}`,
+            `**Verification Level:** ${verificationLevels[interaction.guild.verificationLevel]}`,
+            `**Time Created:** ${moment(interaction.guild.createdTimestamp).format('LT')} ${moment(interaction.guild.createdTimestamp).format('LL')} [${moment(interaction.guild.createdTimestamp).fromNow()}]`,
+            '\u200b'
+        ])
+        .addField('Statistics', [
+            `**Role Count:** ${roles.length}`,
+            `**Emoji Count:** ${emojis.size}`,
+            `**Regular Emoji Count:** ${emojis.filter(emoji => !emoji.animated).size}`,
+            `**Animated Emoji Count:** ${emojis.filter(emoji => emoji.animated).size}`,
+            `**Member Count:** ${interaction.guild.memberCount}`,
+            `**Humans:** ${members.filter(member => !member.user.bot).size}`,
+            `**Bots:** ${members.filter(member => member.user.bot).size}`,
+            `**Text Channels:** ${channels.filter(channel => channel.type === 'text').size}`,
+            `**Voice Channels:** ${channels.filter(channel => channel.type === 'voice').size}`,
+            `**Boost Count:** ${interaction.guild.premiumSubscriptionCount || '0'}`,
+            '\u200b'
+        ])
+        .addField('Presence', [
+            `**Online:** ${members.filter(member => member.presence.status === 'online').size}`,
+            `**Idle:** ${members.filter(member => member.presence.status === 'idle').size}`,
+            `**Do Not Disturb:** ${members.filter(member => member.presence.status === 'dnd').size}`,
+            `**Offline:** ${members.filter(member => member.presence.status === 'offline').size}`,
+            '\u200b'
+        ])
+        .addField(`Roles [${roles.length - 1}]`, roles.join(', '))
 
-            const serviembed = new MessageEmbed()
-                .setDescription(`**Server Info**`)
-                .setColor('BLACK')
-                .setThumbnail(message.guild.iconURL({ dynamic: true }))
-                .addField('General', [
-                    `**Name:** ${message.guild.name}`,
-                    `**ID:** ${message.guild.id}`,
-                    `**Owner:** ${message.guild.owner.user.tag} (${message.guild.ownerID})`,
-                    `**Region:** ${regions[message.guild.region]}`,
-                    `**Boost Tier:** ${message.guild.premiumTier ? `Tier ${message.guild.premiumTier}` : 'None'}`,
-                    `**Explicit Filter:** ${filterLevels[message.guild.explicitContentFilter]}`,
-                    `**Verification Level:** ${verificationLevels[message.guild.verificationLevel]}`,
-                    `**Time Created:** ${moment(message.guild.createdTimestamp).format('LT')} ${moment(message.guild.createdTimestamp).format('LL')} [${moment(message.guild.createdTimestamp).fromNow()}]`,
-                    '\u200b'
-                ])
-                .addField('Statistics', [
-                    `**Role Count:** ${roles.length}`,
-                    `**Emoji Count:** ${emojis.size}`,
-                    `**Regular Emoji Count:** ${emojis.filter(emoji => !emoji.animated).size}`,
-                    `**Animated Emoji Count:** ${emojis.filter(emoji => emoji.animated).size}`,
-                    `**Member Count:** ${message.guild.memberCount}`,
-                    `**Humans:** ${members.filter(member => !member.user.bot).size}`,
-                    `**Bots:** ${members.filter(member => member.user.bot).size}`,
-                    `**Text Channels:** ${channels.filter(channel => channel.type === 'text').size}`,
-                    `**Voice Channels:** ${channels.filter(channel => channel.type === 'voice').size}`,
-                    `**Boost Count:** ${message.guild.premiumSubscriptionCount || '0'}`,
-                    '\u200b'
-                ])
-                .addField('Presence', [
-                    `**Online:** ${members.filter(member => member.presence.status === 'online').size}`,
-                    `**Idle:** ${members.filter(member => member.presence.status === 'idle').size}`,
-                    `**Do Not Disturb:** ${members.filter(member => member.presence.status === 'dnd').size}`,
-                    `**Offline:** ${members.filter(member => member.presence.status === 'offline').size}`,
-                    '\u200b'
-                ])
-                .addField(`Roles [${roles.length - 1}]`, roles.join(', '))
-
-                .setTimestamp();
-            await interaction.reply({ content: serviembed, ephemeral: true });
-        }
-
-    }
+        .setTimestamp();
+    await interaction.reply({ content: serviembed, ephemeral: true });
 }
 
 //              Slash Commands
