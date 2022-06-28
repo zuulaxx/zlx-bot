@@ -93,7 +93,7 @@ module.exports.execute = async (interaction, Client, message) => {
 
 //              Slash Commands
 module.exports.help = {
-    name: "serveur-info", //Name of the command
+    name: "server-info", //Name of the command
     description: "Donne des infos sur tout le serveur", //Description of the command
     type: 1, //Type of the command. Read the readme.md file for more information
     // options: [
