@@ -630,8 +630,8 @@ Client.on('interactionCreate', async interaction => {
 const CommandFiles = fs.readdirSync("./commands").filter(fl => fl.endsWith(".js"));
 CommandFiles.forEach((f, i) => {
   let props = require(`./commands/${f}`)
-  Client.commands.set(props.help.name, props)
-  Commands.push(props.help.name)
+  Client.commands.set(props?.help?.name, props)
+  Commands.push(props?.help?.name)
 })
 
 Client.on('messageCreate', async (message) => {
