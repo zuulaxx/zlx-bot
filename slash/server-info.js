@@ -4,11 +4,11 @@ module.exports.execute = async (interaction, guild, message) => {
     const { MessageEmbed } = require('discord.js');
     const moment = require('moment');
 
-    const filterLevels = {
-        DISABLED: 'Off',
-        MEMBERS_WITHOUT_ROLES: 'No Role',
-        ALL_MEMBERS: 'Everyone'
-    };
+    // const filterLevels = {
+    //     DISABLED: 'Off',
+    //     MEMBERS_WITHOUT_ROLES: 'No Role',
+    //     ALL_MEMBERS: 'Everyone'
+    // };
 
     const verificationLevels = {
         NONE: 'None',
@@ -40,18 +40,19 @@ module.exports.execute = async (interaction, guild, message) => {
 
     const serviembed = new MessageEmbed()
         .setDescription(`**Server Info**`)
-        .setColor('BLACK')
+        .setColor('#2d4fa3')
         .setThumbnail(interaction.guild.iconURL({ dynamic: true }))
         .addFields(
             {name: `**Name:**`, value: `${interaction.guild.name}`},
             {name: `**ID:**`, value: `${interaction.guild.id}` },
-            {name: `**Owner:**`, value: `${interaction.guild.owner.tag} (${interaction.guild.ownerID})` },
+            //{name: `**Owner:**`, value: `${interaction.guild.owner.tag} (${interaction.guild.ownerID})` },
             {name: `**Region:**`, value: `${regions[interaction.guild.region]}` },
+            {name: `**Boost Count:**`, value: `${interaction.guild.premiumSubscriptionCount || '0'}` },
             {name: `**Boost Tier:**`, value: `${interaction.guild.premiumTier ? `Tier ${interaction.guild.premiumTier}` : 'None'}` },
-            {name: `**Explicit Filter:**`, value: `${filterLevels[interaction.guild.explicitContentFilter]}` },
+            //{name: `**Explicit Filter:**`, value: `${filterLevels[interaction.guild.explicitContentFilter]}` },
             {name: `**Verification Level:**`, value: `${verificationLevels[interaction.guild.verificationLevel]}` },
             {name: `**Time Created:**`, value: `${moment(interaction.guild.createdTimestamp).format('LT')} ${moment(interaction.guild.createdTimestamp).format('LL')} [${moment(interaction.guild.createdTimestamp).fromNow()}]` },
-            //{ name: '\u200B', value: '\u200B' },
+            //{name: '\u200B', value: '\u200B' },
             {name: `**Role Count:**`, value: `${roles.length}` },
             {name: `**Emoji Count:**`, value: `${emojis.size}` },
             {name: `**Regular Emoji Count:**`, value: `${emojis.filter(emoji => !emoji.animated).size}` },
@@ -61,17 +62,16 @@ module.exports.execute = async (interaction, guild, message) => {
             {name: `**Bots:**`, value: `${members.filter(member => member.user.bot).size}` },
             {name: `**Text Channels:**`, value: `${channels.filter(channel => channel.type === 'text').size}` },
             {name: `**Voice Channels:**`, value: `${channels.filter(channel => channel.type === 'voice').size}` },
-            {name: `**Boost Count:**`, value: `${interaction.guild.premiumSubscriptionCount || '0'}` },
-            //{ name: '\u200B', value: '\u200B' },
-            {name: `**Online:**`, value: `${members.filter(member => member.presence.status === 'online').size}` },
-            {name: `**Idle:**`, value: `${members.filter(member => member.presence.status === 'idle').size}` },
-            {name: `**Do Not Disturb:**`, value: `${members.filter(member => member.presence.status === 'dnd').size}` },
-            {name: `**Offline:**`, value: `${members.filter(member => member.presence.status === 'offline').size}` }
-            //{ name: '\u200B', value: '\u200B' },
+            //{name: '\u200B', value: '\u200B' },
+            // {name: `**Online:**`, value: `${members.filter(member => member.presence.status === 'online').size}` },
+            // {name: `**Idle:**`, value: `${members.filter(member => member.presence.status === 'idle').size}` },
+            // {name: `**Do Not Disturb:**`, value: `${members.filter(member => member.presence.status === 'dnd').size}` },
+            // {name: `**Offline:**`, value: `${members.filter(member => member.presence.status === 'offline').size}` }
+            //{name: '\u200B', value: '\u200B' },
             //{name:`**Roles**`, value: `Roles [${roles.length - 1}]`, roles.join(', ') }
         )
         .setTimestamp();
-            await interaction.reply({ content: serviembed, ephemeral: true });
+        await interaction.reply({ embeds: [serviembed], ephemeral: false });
 }
 
 //              Slash Commands
