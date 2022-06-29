@@ -63,10 +63,10 @@ module.exports.execute = async (interaction, guild, message) => {
             {name: `**Text Channels:**`, value: `${channels.filter(channel => channel.type === 'text').size}` },
             {name: `**Voice Channels:**`, value: `${channels.filter(channel => channel.type === 'voice').size}` },
             //{name: '\u200B', value: '\u200B' },
-            // {name: `**Online:**`, value: `${members.filter(member => member.presence.status === 'online').size}` },
-            // {name: `**Idle:**`, value: `${members.filter(member => member.presence.status === 'idle').size}` },
-            // {name: `**Do Not Disturb:**`, value: `${members.filter(member => member.presence.status === 'dnd').size}` },
-            // {name: `**Offline:**`, value: `${members.filter(member => member.presence.status === 'offline').size}` }
+            {name: `**Online:**`, value: `${members.filter(member => member.presence.status === 'online').size}` },
+            {name: `**Idle:**`, value: `${members.filter(member => member.presence.status === 'idle').size}` },
+            {name: `**Do Not Disturb:**`, value: `${members.filter(member => member.presence.status === 'dnd').size}` },
+            {name: `**Offline:**`, value: `${members.filter(member => member.presence.status === 'offline').size}` }
             //{name: '\u200B', value: '\u200B' },
             //{name:`**Roles**`, value: `Roles [${roles.length - 1}]`, roles.join(', ') }
         )

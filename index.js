@@ -15,6 +15,7 @@ const Client = new Discord.Client({
     Discord.Intents.FLAGS.GUILD_MEMBERS,
     Discord.Intents.FLAGS.DIRECT_MESSAGE_REACTIONS,
     Discord.Intents.FLAGS.GUILD_VOICE_STATES,
+    Discord.Intents.FLAGS.GUILD_PRESENCES
   ],
 });
 
