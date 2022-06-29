@@ -16,7 +16,7 @@
     "discord": "^0.8.2",
     "discord-api-types": "^0.34.0",
     "discord-dashboard": "^2.3.39",
-    "discord.js": "^13.8.0",
+    "discord.js": "13.8.0",
     "ffmpeg": "^0.0.4",
     "ffmpeg-static": "^5.0.0",
     "fs": "^0.0.1-security",
