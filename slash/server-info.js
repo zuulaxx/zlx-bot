@@ -42,35 +42,36 @@ module.exports.execute = async (interaction, guild, message) => {
         .setDescription(`**Server Info**`)
         .setColor('BLACK')
         .setThumbnail(interaction.guild.iconURL({ dynamic: true }))
-        .addField(`**Name:** ${interaction.guild.name}`)
-        .addField(`**ID:** ${interaction.guild.id}`)
-        //.addField(`**Owner:** ${interaction.guild.owner.tag} (${interaction.guild.ownerID})`)
-        .addField(`**Region:** ${regions[interaction.guild.region]}`)
-        .addField(`**Boost Tier:** ${interaction.guild.premiumTier ? `Tier ${interaction.guild.premiumTier}` : 'None'}`)
-        .addField(`**Explicit Filter:** ${filterLevels[interaction.guild.explicitContentFilter]}`)
-        .addField(`**Verification Level:** ${verificationLevels[interaction.guild.verificationLevel]}`)
-        .addField(`**Time Created:** ${moment(interaction.guild.createdTimestamp).format('LT')} ${moment(interaction.guild.createdTimestamp).format('LL')} [${moment(interaction.guild.createdTimestamp).fromNow()}]`)
-        .addField('\u200b')
-        .addField(`**Role Count:** ${roles.length}`)
-        .addField(`**Emoji Count:** ${emojis.size}`)
-        .addField(`**Regular Emoji Count:** ${emojis.filter(emoji => !emoji.animated).size}`)
-        .addField(`**Animated Emoji Count:** ${emojis.filter(emoji => emoji.animated).size}`)
-        .addField(`**Member Count:** ${interaction.guild.memberCount}`)
-        .addField(`**Humans:** ${members.filter(member => !member.user.bot).size}`)
-        .addField(`**Bots:** ${members.filter(member => member.user.bot).size}`)
-        .addField(`**Text Channels:** ${channels.filter(channel => channel.type === 'text').size}`)
-        .addField(`**Voice Channels:** ${channels.filter(channel => channel.type === 'voice').size}`)
-        .addField(`**Boost Count:** ${interaction.guild.premiumSubscriptionCount || '0'}`)
-        .addField('\u200b')
-        .addField(`**Online:** ${members.filter(member => member.presence.status === 'online').size}`)
-        .addField(`**Idle:** ${members.filter(member => member.presence.status === 'idle').size}`)
-        .addField(`**Do Not Disturb:** ${members.filter(member => member.presence.status === 'dnd').size}`)
-        .addField(`**Offline:** ${members.filter(member => member.presence.status === 'offline').size}`)
-        .addField('\u200b')
-        .addField(`Roles [${roles.length - 1}]`, roles.join(', '))
-
+        .addFields(
+            {`**Name:** ${interaction.guild.name}`}
+            { `**ID:** ${interaction.guild.id}` }
+            { `**Owner:** ${interaction.guild.owner.tag} (${interaction.guild.ownerID})` }
+            { `**Region:** ${regions[interaction.guild.region]}` }
+            { `**Boost Tier:** ${interaction.guild.premiumTier ? `Tier ${interaction.guild.premiumTier}` : 'None'}` }
+            { `**Explicit Filter:** ${filterLevels[interaction.guild.explicitContentFilter]}` }
+            { `**Verification Level:** ${verificationLevels[interaction.guild.verificationLevel]}` }
+            { `**Time Created:** ${moment(interaction.guild.createdTimestamp).format('LT')} ${moment(interaction.guild.createdTimestamp).format('LL')} [${moment(interaction.guild.createdTimestamp).fromNow()}]` }
+            { '\u200b' }
+            { `**Role Count:** ${roles.length}` }
+            { `**Emoji Count:** ${emojis.size}` }
+            { `**Regular Emoji Count:** ${emojis.filter(emoji => !emoji.animated).size}` }
+            { `**Animated Emoji Count:** ${emojis.filter(emoji => emoji.animated).size}` }
+            { `**Member Count:** ${interaction.guild.memberCount}` }
+            { `**Humans:** ${members.filter(member => !member.user.bot).size}` }
+            { `**Bots:** ${members.filter(member => member.user.bot).size}` }
+            { `**Text Channels:** ${channels.filter(channel => channel.type === 'text').size}` }
+            { `**Voice Channels:** ${channels.filter(channel => channel.type === 'voice').size}` }
+            { `**Boost Count:** ${interaction.guild.premiumSubscriptionCount || '0'}` }
+            { '\u200b' }
+            { `**Online:** ${members.filter(member => member.presence.status === 'online').size}` }
+            { `**Idle:** ${members.filter(member => member.presence.status === 'idle').size}` }
+            { `**Do Not Disturb:** ${members.filter(member => member.presence.status === 'dnd').size}` }
+            { `**Offline:** ${members.filter(member => member.presence.status === 'offline').size}` }
+            { '\u200b' }
+            { `Roles [${roles.length - 1}]`, roles.join(', ') }
+        );
         .setTimestamp();
-    await interaction.reply({ content: serviembed, ephemeral: true });
+await interaction.reply({ content: serviembed, ephemeral: true });
 }
 
 //              Slash Commands
