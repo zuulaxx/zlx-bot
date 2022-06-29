@@ -43,7 +43,7 @@ module.exports.execute = async (interaction, guild, message) => {
         .setColor('BLACK')
         .setThumbnail(interaction.guild.iconURL({ dynamic: true }))
         .addFields(
-            {`**Name:** ${interaction.guild.name}`}
+            {name: `**Name:**`, value: `${interaction.guild.name}`}
             { `**ID:** ${interaction.guild.id}` }
             { `**Owner:** ${interaction.guild.owner.tag} (${interaction.guild.ownerID})` }
             { `**Region:** ${regions[interaction.guild.region]}` }
