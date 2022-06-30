@@ -9,7 +9,7 @@ module.exports.execute = async (interaction, Client, message) => {
             //{ name: '\u200B', value: '\u200B' },
             {
                 name: "Lien 👨‍💻 :",
-                value: ('[Source de zlx-bot](https://github.com/zuulaxx/zlx-bot)'),
+                value: ('[Code source de zlx-bot](https://github.com/zuulaxx/zlx-bot)'),
                 inline: false,
             },
         )
