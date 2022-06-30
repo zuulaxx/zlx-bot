@@ -17,7 +17,7 @@ module.exports.execute = async (interaction, Client, message) => {
         .setFooter({
             text: `Un Utilisateur a demandé le github !`,
         });
-    await interaction.reply({ embeds: [gitEmbed], ephemeral: true }).catch(),
+    await interaction.reply({ embeds: [gitEmbed], ephemeral: true }).catch(), 
         console.log(`\n The **git** command has been sent 😄`);
 }
 
