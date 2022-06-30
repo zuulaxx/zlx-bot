@@ -46,7 +46,7 @@ module.exports.execute = async (interaction, guild, message) => {
             {name: `**Name:**`, value: `${interaction.guild.name}`},
             {name: `**ID:**`, value: `${interaction.guild.id}` },
             //{name: `**Owner:**`, value: `${interaction.guild.owner.tag} (${interaction.guild.ownerID})` },
-            {name: `**Region:**`, value: `${regions[interaction.guild.region]}` },
+            //{name: `**Region:**`, value: `${regions[interaction.guild.region]}` },
             {name: `**Boost Count:**`, value: `${interaction.guild.premiumSubscriptionCount || '0'}` },
             {name: `**Boost Tier:**`, value: `${interaction.guild.premiumTier ? `Tier ${interaction.guild.premiumTier}` : 'None'}` },
             //{name: `**Explicit Filter:**`, value: `${filterLevels[interaction.guild.explicitContentFilter]}` },
@@ -60,18 +60,16 @@ module.exports.execute = async (interaction, guild, message) => {
             {name: `**Member Count:**`, value: `${interaction.guild.memberCount}` },
             {name: `**Humans:**`, value: `${members.filter(member => !member.user.bot).size}` },
             {name: `**Bots:**`, value: `${members.filter(member => member.user.bot).size}` },
-            {name: `**Text Channels:**`, value: `${channels.filter(channel => channel.type === 'text').size}` },
-            {name: `**Voice Channels:**`, value: `${channels.filter(channel => channel.type === 'voice').size}` },
+            // {name: `**Text Channels:**`, value: `${channels.filter(channel => channel.type === 'text').size}` },
+            // {name: `**Voice Channels:**`, value: `${channels.filter(channel => channel.type === 'voice').size}` },
             //{name: '\u200B', value: '\u200B' },
-            {name: `**Online:**`, value: `${members.filter(member => member.presence.status === 'online').size}` },
-            {name: `**Idle:**`, value: `${members.filter(member => member.presence.status === 'idle').size}` },
-            {name: `**Do Not Disturb:**`, value: `${members.filter(member => member.presence.status === 'dnd').size}` },
-            {name: `**Offline:**`, value: `${members.filter(member => member.presence.status === 'offline').size}` }
-            //{name: '\u200B', value: '\u200B' },
-            //{name:`**Roles**`, value: `Roles [${roles.length - 1}]`, roles.join(', ') }
+            // {name: `**Online:**`, value: `${members.filter(member => member.presence.status === 'online').size}` },
+            // {name: `**Idle:**`, value: `${members.filter(member => member.presence.status === 'idle').size}` },
+            // {name: `**Do Not Disturb:**`, value: `${members.filter(member => member.presence.status === 'dnd').size}` },
+            // {name: `**Offline:**`, value: `${members.filter(member => member.presence.status === 'offline').size}` }
         )
         .setTimestamp();
-        await interaction.reply({ embeds: [serviembed], ephemeral: false });
+        await interaction.reply({ embeds: [serviembed], ephemeral: true });
 }
 
 //              Slash Commands

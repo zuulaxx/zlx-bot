@@ -24,7 +24,7 @@ module.exports.execute = async(Client, message, args, connection, subscription, 
 
 module.exports.help = {
     name: "stop", //Name of the commands
-    description: "music command", //Description of the commands
+    description: "stop la musique", //Description of the commands
     permission: "SEND_MESSAGES", //Required permissions to execute the commands (if you want no permissions it's recommanded to put SEND_MESSAGES)
     enable: true, //If the command is under maintenance
     show: true //If the command is showed on the help menu

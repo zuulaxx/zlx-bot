@@ -50,7 +50,7 @@ module.exports.execute = async(Client, message, args, connection, subscription, 
 
 module.exports.help = {
     name: "bee", //Name of the commands
-    description: "bee command", //Description of the commands
+    description: "Envoie une image d'abeilles random", //Description of the commands
     permission: "SEND_MESSAGES", //Required permissions to execute the commands (if you want no permissions it's recommanded to put SEND_MESSAGES)
     enable: true, //If the command is under maintenance
     show: true //If the command is showed on the help menu

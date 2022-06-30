@@ -65,7 +65,7 @@ module.exports.execute = async(Client, message, args) => {
 
 module.exports.help = {
     name: "stats", //Name of the commands
-    description: "zlx command", //Description of the commands
+    description: "Donne des stats sur le bot", //Description of the commands
     permission: "SEND_MESSAGES", //Required permissions to execute the commands (if you want no permissions it's recommanded to put SEND_MESSAGES)
     enable: true, //If the command is under maintenance
     show: true //If the command is showed on the help menu
