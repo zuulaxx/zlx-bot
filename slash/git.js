@@ -18,7 +18,7 @@ module.exports.execute = async (interaction, Client, message) => {
             text: `Un Utilisateur a demandé le github !`,
         });
     await interaction.reply({ embeds: [gitEmbed], ephemeral: true }).catch(),
-        console.log(`\n The **git** command has been sent by ${message.author.tag} à utilisé **say** 😄`);
+        console.log(`\n The **git** command has been sent 😄`);
 }
 
 //              Slash Commands
