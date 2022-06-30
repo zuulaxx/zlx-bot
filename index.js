@@ -54,6 +54,9 @@ Client.on('ready', async () => {
 
     Client.user.setActivity(status[rstatus], { type: 'WATCHING' });
   }, 10000);
+
+  Client.user.setStatus('dnd')
+  //Client.user.setStatus('idle')
   //statue
 });
 
