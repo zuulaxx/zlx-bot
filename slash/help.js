@@ -1,6 +1,6 @@
 const { MessageActionRow, MessageButton, MessageEmbed } = require('discord.js');
 
-module.exports.execute = async (interaction, Client) => {
+module.exports.execute = async (interaction, Client, message) => {
     const exampleEmbed = new MessageEmbed()
         .setColor('#0000ff')
         .setTitle("Tu as besoin d'aide ?")

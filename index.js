@@ -43,32 +43,32 @@ Client.on('ready', async () => {
   console.log(`Démarage le ${fullDate}`);
 
   //statue
-  // setInterval(function () {
-  //   let status = [
-  //     `Il y a ${Client.guilds.cache
-  //       .map((g) => g.memberCount)
-  //       .reduce((a, b) => a + b)} utilisateurs`,
-  //     'vos messages 😊',
-  //   ];
-
-  // setInterval(function () {
-  //   let status = ['En dev ...'];
-
-  //   let rstatus = Math.floor(Math.random() * status.length);
-
-  //   Client.user.setActivity(status[rstatus], { type: 'WATCHING' });
-  // }, 10000);
-
   setInterval(function () {
-    let status = ['En Pause ...'];
+    let status = [
+      `Il y a ${Client.guilds.cache
+        .map((g) => g.memberCount)
+        .reduce((a, b) => a + b)} utilisateurs`,
+      'vos messages 😊',
+    ];
 
     let rstatus = Math.floor(Math.random() * status.length);
 
     Client.user.setActivity(status[rstatus], { type: 'WATCHING' });
   }, 10000);
 
+  // setInterval(function () {
+  //   let status = ['En dev ...'];
+
+  // setInterval(function () {
+  //   let status = [/*'En Pause ...', */'Rien'];
+
+  //   let rstatus = Math.floor(Math.random() * status.length);
+
+  //   Client.user.setActivity(status[rstatus], /*{ type: 'STREAMING' });*/{ type: 'PLAYING' });/*{ type: 'WATCHING' });*/
+  // }, 10000);
+
   //Client.user.setStatus('dnd')
-  Client.user.setStatus('idle')
+  //Client.user.setStatus('idle')
   //statue
 });
 
