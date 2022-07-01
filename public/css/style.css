@@ -1,4 +1,13 @@
-botimg {
-  height: 100px;
-  width: 100px;
+body {
+  align-content: center;
+}
+img {
+width: 100px;
+height: 100px;
+}
+h1 {
+  size: 100px;
+}
+h2 {
+  border: 800px;
 }
