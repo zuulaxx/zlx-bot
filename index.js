@@ -43,31 +43,31 @@ Client.on('ready', async () => {
   console.log(`Démarage le ${fullDate}`);
 
   //statue
-  setInterval(function () {
-    let status = [
-      `Il y a ${Client.guilds.cache
-        .map((g) => g.memberCount)
-        .reduce((a, b) => a + b)} utilisateurs`,
-      'vos messages 😊',
-    ];
-
-    let rstatus = Math.floor(Math.random() * status.length);
-
-    Client.user.setActivity(status[rstatus], { type: 'WATCHING' });
-  }, 10000);
-
   // setInterval(function () {
-  //   let status = ['En dev ...'];
+  //   let status = [
+  //     `Il y a ${Client.guilds.cache
+  //       .map((g) => g.memberCount)
+  //       .reduce((a, b) => a + b)} utilisateurs`,
+  //     'vos messages 😊',
+  //   ];
+
+  //   let rstatus = Math.floor(Math.random() * status.length);
+
+  //   Client.user.setActivity(status[rstatus], { type: 'WATCHING' });
+  // }, 10000);
+
+  setInterval(function () {
+    let status = ['En dev ...'];
 
   // setInterval(function () {
   //   let status = [/*'En Pause ...', */'Rien'];
 
-  //   let rstatus = Math.floor(Math.random() * status.length);
+    let rstatus = Math.floor(Math.random() * status.length);
 
-  //   Client.user.setActivity(status[rstatus], /*{ type: 'STREAMING' });*/{ type: 'PLAYING' });/*{ type: 'WATCHING' });*/
-  // }, 10000);
+    Client.user.setActivity(status[rstatus], /*{ type: 'STREAMING' });*/{ type: 'PLAYING' });/*{ type: 'WATCHING' });*/
+  }, 10000);
 
-  //Client.user.setStatus('dnd')
+  Client.user.setStatus('dnd')
   //Client.user.setStatus('idle')
   //statue
 });
@@ -87,9 +87,14 @@ Client.on("guildMemberAdd", member => {
     .addField('Avatar :', `ㅤ`, false)
     .setImage(member.user.displayAvatarURL({ dynamic: true }), false);
 
-  member.guild.channels.cache.find(channel => channel.id === "985155904422965358").send({ embeds: [ARREmbed] });
+  member.guild.channels.cache.find(channel => channel.id === "986698834853892109").send({ embeds: [ARREmbed] });
 });
 //MESSAGE D'ARRIVÉ
+//MESSAGE DE DÉPART
+Client.on("guildMemberRemove", member => {
+  member.guild.channels.cache.find(channel => channel.id === "986698834853892109").send("Hooooo nonnnnn ! " + "<@" + member.id + ">" + " vient de nous quitter 😥");
+});
+//MESSAGE DE DÉPART
 
 
 Client.on('messageCreate', (message) => {
