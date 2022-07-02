@@ -57,7 +57,7 @@ Client.on('ready', async () => {
   // }, 10000);
 
   setInterval(function () {
-    let status = ['En dev ...'];
+    let status = ['En dev ...', 'NE PAS FAIRE DE CMD'];
 
   // setInterval(function () {
   //   let status = [/*'En Pause ...', */'Rien'];
