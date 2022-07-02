@@ -87,12 +87,12 @@ Client.on("guildMemberAdd", member => {
     .addField('Avatar :', `ㅤ`, false)
     .setImage(member.user.displayAvatarURL({ dynamic: true }), false);
 
-  member.guild.channels.cache.find(channel => channel.id === "986698834853892109").send({ embeds: [ARREmbed] });
+  member.guild.channels.cache.find(channel => channel.id === "985155904422965358").send({ embeds: [ARREmbed] });
 });
 //MESSAGE D'ARRIVÉ
 //MESSAGE DE DÉPART
 Client.on("guildMemberRemove", member => {
-  member.guild.channels.cache.find(channel => channel.id === "986698834853892109").send("Hooooo nonnnnn ! " + "<@" + member.id + ">" + " vient de nous quitter 😥");
+  member.guild.channels.cache.find(channel => channel.id === "985155904422965358").send("Hooooo nonnnnn ! " + "<@" + member.id + ">" + " vient de nous quitter 😥");
 });
 //MESSAGE DE DÉPART
 
