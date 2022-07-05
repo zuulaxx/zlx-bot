@@ -13,7 +13,7 @@ for (const file of commandFiles) {
 
 const rest = new REST({ version: '9' }).setToken(ClientSettings.token);
 
-//Deleting older Guild Commands
+// Deleting older Guild Commands
 // rest.get(Routes.applicationGuildCommands('986711914077892608', '986698834853892106'))
 // 	.then(data => {
 // 		const promises = [];
@@ -25,7 +25,7 @@ const rest = new REST({ version: '9' }).setToken(ClientSettings.token);
 // 		return Promise.all(promises);
 // });
 
-//Deleting older Client Commands
+// Deleting older Client Commands
 // rest.get(Routes.applicationCommands('986711914077892608'))
 // 	.then(data => {
 // 		const promises = [];
