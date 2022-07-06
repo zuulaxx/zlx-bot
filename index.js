@@ -613,7 +613,7 @@ let Events = [];
 let Commands = [];
 
 //Slash Command Handler
-const SlashCommandFiles = fs.readdirSync("./slash").filter(fl => fl.endsWith(".js"));
+const SlashCommandFiles = fs.readdirSync("./slash").filter(fl => fl.endsWith(".js", ".ts"));
 Client.commands = new Collection();
 
 SlashCommandFiles.forEach(async file => {
@@ -648,7 +648,7 @@ Client.on('interactionCreate', async interaction => {
 });
 
 //Commands handler
-const CommandFiles = fs.readdirSync("./commands").filter(fl => fl.endsWith(".js"));
+const CommandFiles = fs.readdirSync("./commands").filter(fl => fl.endsWith(".js", ".ts"));
 CommandFiles.forEach((f, i) => {
   let props = require(`./commands/${f}`)
   Client.commands.set(props?.help?.name, props)
