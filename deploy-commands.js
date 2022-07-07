@@ -4,7 +4,7 @@ const fs = require('fs');
 const ClientSettings = require('./ClientSettings.json');
 
 const commands = [];
-const commandFiles = fs.readdirSync('./slash').filter(file => file.endsWith('.js', '.ts'));
+const commandFiles = fs.readdirSync('./slash').filter(file => file.endsWith('.js'/*, '.ts'*/));
 
 for (const file of commandFiles) {
 	const command = require(`./slash/${file}`);
