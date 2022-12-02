@@ -2,6 +2,8 @@
 ClientSettings.json
 /node_modules
 /.vscode
+.eslintrc.js
+/.eslintrc.js
 
 # Logs
 logs
