@@ -79,7 +79,7 @@ Client.on('messageCreate', (message) => {
     let QueryD = MSG.slice(1).join(' ');
     if (!Query) message.reply('Please specify something for me to say!');
     else {
-      message.channel.send(QueryD), console.log("Say message has been used");
+      message.channel.send(QueryD), message.delete(), console.log("Say message has been used");
     }
   }
   //
