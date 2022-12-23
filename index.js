@@ -106,44 +106,6 @@ Client.on('messageCreate', (message) => {
   // }
   //
 
-   if (message.content === 'rules') {
-message.channel.send(`Bienvenue sur The Dev House
-​Création du serveur : 10 juin 2022 21:26​
-Nous vous demandons de bien respecter les règles ci-dessous
-Vous devez évidement réspécter aussi les TOS de discord (https://discord.com/tos)
-​
-​
-I – Comportement
--Restez courtois, poli. Vous pouvez être familier, nous ne vous demandons pas d’écrire comme Molière... Mais n'en abusez pas.
-
--Pas de violence verbale gratuite. Vous pouvez taquiner gentiment sans aller dans l’extrême. Si cela reste dans la bonne humeur et le second degré nous le tolérons. Si le staff estime que cela ne respecte plus la règle, vous risquez un kick ou un ban en fonction de l’humeur de la personne qui s'occupe de votre cas.
-​
-​
-II – Chat écrit/vocal
--Pas de spam, sous peine de bannissement.
-
--Pas de pub sur les différents chats, sous peine d’avertissement puis ban si l’avertissement n’est pas pris en compte. Sauf dérogation via un ticket.
-​
-​
-III – Profil/Pseudo
--Ne doit pas être ressemblant/confondu avec celui d’un membre du staff, sous peine d’avertissement puis ban si l’avertissement n’est pas pris en compte.
-
--Ne doit pas contenir de propos racistes, homophobes, sexistes … (genre la photo de profil Hi**er on s’en passera) sous peine d’avertissement puis ban si l’avertissement n’est pas pris en compte.
-
--Ne doit pas avoir de caractère pornographique, sous peine d’avertissement puis ban si l’avertissement n’est pas pris en compte.
-​
-​
-IV - Contacter le staff
--Si pour une quelconque raison, vous voulez contacter un membre du staff (modo ou admin), faite un ticket
-
--Si vous voulez entrer dans l’équipe de modération, faite un :mailbox:・ticket vous passerez un genre d’entretien afin de voir vos motivations et vos idées pour améliorer le serveur. Ne stressez pas non plus, si vous êtes légitime ça se passera bien ;). C’est histoire de voir à qui donner le rôle de modo et d’apprendre à le/la connaître. La décision vous sera donnée ultérieurement par réponse au ticket.
-​
-​
-Ces règles peuvent être soumises à des évolutions au cours du temps.
-Vous avez ici la base du règlement !!!
-Merci de le réspecter 😁`)
-  };
-
   //say
   if (message.content.toLowerCase().startsWith(prefix + 'say')) {
     let MSG = message.content.split(' ');
